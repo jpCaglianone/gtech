@@ -1,0 +1,41 @@
+.container{
+    width: 100%;
+}
+
+.navbar{
+    margin-top: 50px;
+}
+
+header{
+    background-color: black;
+    margin-top: 100px;
+    padding: 25px;
+}
+
+li > a {
+    color: white;
+}
+
+figure {
+    width: 100%;
+    height: 150px;
+}
+
+main{
+    margin-top: 50px;
+}
+
+.select-unidade{
+    margin-top: 50px;
+}
+
+.form-select{
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+
+.form-select:hover{
+    cursor: pointer;
+    border: 2px solid black;
+    transition: all 0.5s;
+}
