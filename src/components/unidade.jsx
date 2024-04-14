@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../styles.css';
 
-const Unidade = () => {
+
+const Unidade = (props) => {
     const [habilitarBotao, setHabilitarBotao] = useState(true);
 
     function seletorUnidade(event) {
@@ -30,7 +31,7 @@ const Unidade = () => {
                                 <option value="Meier">Meier</option>
                                 <option value="Tijuca">Tijuca</option>
                             </select>
-                            <button className='button btn-success' disabled={habilitarBotao}>Continuar</button>
+                            <button className='button btn btn-warning' disabled={habilitarBotao} onClick={props.onClick}>Continuar</button>
                         </div>
                     </div>
                 </div>
