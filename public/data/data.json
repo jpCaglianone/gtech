@@ -3,75 +3,75 @@
         {
             "Meier": [
                 {
-                    "nomeFantasia": "",
-                    "endereco": "",
-                    "cnpj": "",
-                    "cep": "",
-                    "extensao": "Meier | Scrap"
+                    "nomeFantasia": "G. Tech Comércio de Joias LTDA",
+                    "endereco": "Rua Dias da Cruz 215, loja 111 - Rio de Janeiro/RJ ",
+                    "cnpj": "52.923.068/0001-46",
+                    "cep": "20720-010",
+                    "extensao": "Scrap"
                 },
                 {
-                    "nomeFantasia": "",
-                    "endereco": "",
-                    "cnpj": "",
-                    "cep": "",
-                    "extensao": "Meier | 24K"
+                    "nomeFantasia": "24K Joias | Thais Joias LTDA",
+                    "endereco": "Rua Dias da Cruz 215, loja 111 - Rio de Janeiro/RJ ",
+                    "cnpj": "33.469.674/0001-99",
+                    "cep": ": 20720-010",
+                    "extensao": "24K"
                 },
                 {
-                    "nomeFantasia": "",
-                    "endereco": "",
-                    "cnpj": "",
-                    "cep": "",
-                    "extensao": "Meier | Scrap"
+                    "nomeFantasia": "24K Joias | Thais Joias LTDA",
+                    "endereco": "Rua Dias da Cruz 215, loja 111 - Rio de Janeiro/RJ ",
+                    "cnpj": "33.469.674/0001-99",
+                    "cep": ": 20720-010",
+                    "extensao": "Second Hand"
                 }
             ]
         },
         {
             "Ipanema": [
                 {
-                    "nomeFantasia": "",
-                    "endereco": "",
-                    "cnpj": "",
-                    "cep": "",
+                    "nomeFantasia": "G. Tech Comércio de Joias LTDA",
+                    "endereco": "Rua Visconde de Pirajá 414, loja 215 - Rio de Janeiro/RJ",
+                    "cnpj": "52.923.068/0001-46",
+                    "cep": "22410-905",
                     "extensao": "Scrap"
                 },
                 {
-                    "nomeFantasia": "",
-                    "endereco": "",
-                    "cnpj": "",
-                    "cep": "",
-                    "extensao": "Scrap"
+                    "nomeFantasia": "Tech Gold Ipanema Comércio de Joias LTDA",
+                    "endereco": "Rua Visconde de Pirajá 414, loja 215 - Rio de Janeiro/RJ",
+                    "cnpj": "53.461.721/0001-65",
+                    "cep": "22410-905",
+                    "extensao": "GTI"
                 },
                 {
-                    "nomeFantasia": "",
-                    "endereco": "",
-                    "cnpj": "",
-                    "cep": "",
-                    "extensao": "Scrap"
+                    "nomeFantasia": "Tech Gold Ipanema Comércio de Joias LTDA",
+                    "endereco": "Rua Visconde de Pirajá 414, loja 215 - Rio de Janeiro/RJ ",
+                    "cnpj": "53.461.721/0001-65",
+                    "cep": "22410-905",
+                    "extensao": "Second Hand"
                 }
             ]
         },
         {
             "Tijuca": [
                 {
-                    "nomeFantasia": "",
-                    "endereco": "",
-                    "cnpj": "",
-                    "cep": "",
+                    "nomeFantasia": "G. Tech Comércio de Joias LTDA",
+                    "endereco": "Rua Conde de Bonfim 344, loja 211 - Rio de Janeiro/RJ",
+                    "cnpj": "52.923.068/0001-46",
+                    "cep": "20520-054",
                     "extensao": "Scrap"
                 },
                 {
-                    "nomeFantasia": "",
-                    "endereco": "",
-                    "cnpj": "",
-                    "cep": "",
-                    "extensao": "Scrap"
+                    "nomeFantasia": "Gold Tech Comércio de Joias LTDA",
+                    "endereco": "Rua Conde de Bonfim 344, loja 211 - Rio de Janeiro/RJ",
+                    "cnpj": "27.871.324/0001-51",
+                    "cep": "20520-054",
+                    "extensao": "GTT"
                 },
                 {
-                    "nomeFantasia": "",
-                    "endereco": "",
-                    "cnpj": "",
-                    "cep": "",
-                    "extensao": "Scrap"
+                    "nomeFantasia": "Gold Tech Comércio de Joias LTDA",
+                    "endereco": "Rua Conde de Bonfim 344, loja 211 - Rio de Janeiro/RJ",
+                    "cnpj": "27.871.324/0001-51",
+                    "cep": "20520-054",
+                    "extensao": "Second Hand"
                 }
             ]
         }

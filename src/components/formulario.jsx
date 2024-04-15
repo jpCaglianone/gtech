@@ -6,14 +6,16 @@ import DadosVendedor from "./componentesFormulario/dadosVendedor";
 import DadosPagamento from "./componentesFormulario/dadosPagamento";
 import DadosRodape from "./componentesFormulario/dadosRodape";
 
+
+
 const Formulario = (props) => {
-    
+
    return (
 
     <div className="container formulario">
 
                 <section className="dadosComprador">
-                    <DadosComprador />
+                    <DadosComprador unidade={props.unidadeSelecionada}/>
                 </section>
 
                 <section className="dadosVendedor">

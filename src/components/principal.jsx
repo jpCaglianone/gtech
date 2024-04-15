@@ -4,9 +4,12 @@ import Formulario from './formulario'
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
+export const UserContext = React.createContext();
+
 const Principal = () => {
     const [data, setData] = useState(null);
     const [unidade, setUnidade] = useState();
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -14,7 +17,7 @@ const Principal = () => {
                 const response = await axios.get('/data/data.json');
                 const detalhesUnidades = response.data.detalhesUnidades;
                 const nomesUnidades = detalhesUnidades.map(unidade => Object.keys(unidade)[0]);
-                setData(nomesUnidades); 
+                setData(nomesUnidades);
             } catch (error) {
                 console.error('Erro ao buscar os dados:', error);
             }
@@ -32,10 +35,13 @@ const Principal = () => {
 
     return (
         <>
+            <UserContext.Provider value={{data}}>
 
-            {tela === "unidade" ? <Unidade onClick={confirmarUnidade} dataCombo = {data}/>
-             : <Formulario unidadeSelecionada={unidade} />}
+                {tela === "unidade" ? <Unidade onClick={confirmarUnidade} dataCombo={data} />
+                    : <Formulario unidadeSelecionada={unidade} />}
 
+
+            </UserContext.Provider>
         </>
     );
 }
