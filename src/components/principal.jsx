@@ -14,9 +14,9 @@ const Principal = () => {
     return (
         <>
 
-               { tela === "unidade" ? <Unidade onClick={confirmarUnidade} /> 
-               
-               : <h1>proxima tela</h1>}
+            {tela === "unidade" ? <Unidade onClick={confirmarUnidade} />
+
+                : <h1>proxima tela</h1>}
 
         </>
     )
