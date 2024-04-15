@@ -1,0 +1,79 @@
+{
+    "detalhesUnidades": [
+        {
+            "Meier": [
+                {
+                    "nomeFantasia": "",
+                    "endereco": "",
+                    "cnpj": "",
+                    "cep": "",
+                    "extensao": "Meier | Scrap"
+                },
+                {
+                    "nomeFantasia": "",
+                    "endereco": "",
+                    "cnpj": "",
+                    "cep": "",
+                    "extensao": "Meier | 24K"
+                },
+                {
+                    "nomeFantasia": "",
+                    "endereco": "",
+                    "cnpj": "",
+                    "cep": "",
+                    "extensao": "Meier | Scrap"
+                }
+            ]
+        },
+        {
+            "Ipanema": [
+                {
+                    "nomeFantasia": "",
+                    "endereco": "",
+                    "cnpj": "",
+                    "cep": "",
+                    "extensao": "Scrap"
+                },
+                {
+                    "nomeFantasia": "",
+                    "endereco": "",
+                    "cnpj": "",
+                    "cep": "",
+                    "extensao": "Scrap"
+                },
+                {
+                    "nomeFantasia": "",
+                    "endereco": "",
+                    "cnpj": "",
+                    "cep": "",
+                    "extensao": "Scrap"
+                }
+            ]
+        },
+        {
+            "Tijuca": [
+                {
+                    "nomeFantasia": "",
+                    "endereco": "",
+                    "cnpj": "",
+                    "cep": "",
+                    "extensao": "Scrap"
+                },
+                {
+                    "nomeFantasia": "",
+                    "endereco": "",
+                    "cnpj": "",
+                    "cep": "",
+                    "extensao": "Scrap"
+                },
+                {
+                    "nomeFantasia": "",
+                    "endereco": "",
+                    "cnpj": "",
+                    "cep": "",
+                    "extensao": "Scrap"
+                }
+            ]
+        }
+    ]
+}
