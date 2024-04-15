@@ -8,8 +8,8 @@ const Header = () => {
         <>
             <header>
                 <div className='container bg-black'>
-                    <figure>
-                        <img className='logo' src='../assets/logo_GTech.png' alt="GTech Logo" />
+                    <figure className='d-flex justify-content-center'>
+                        <img className='logo' src='/assets/logo_GTech.png' alt="GTech Logo" />
                     </figure>
                 </div>
             </header>
