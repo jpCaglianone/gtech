@@ -2,13 +2,8 @@
     width: 100%;
 }
 
-.navbar{
-    margin-top: 50px;
-}
-
 header{
     background-color: black;
-    margin-top: 100px;
     padding: 25px;
 }
 
@@ -58,4 +53,8 @@ main{
 .button:hover{
     transform: scale(1.2);
     transition: all 0.4s;
+}
+
+.dadosPagamento{
+    margin-bottom: 100px;
 }

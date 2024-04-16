@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios"; //tem
-import InputMask from "react-input-mask"; //tem que instalar
-import validaCpf from "../../js/validadorCpf"; // Importa a função validadorCpf do arquivo validador.js
+import axios from "axios";
+import InputMask from "react-input-mask";
+import validaCpf from "../../js/validadorCpf";
 
 const DadosVendedor = () => {
   const [nome, setNome] = useState("");
@@ -13,31 +13,27 @@ const DadosVendedor = () => {
   const [complemento, setComplemento] = useState("");
   const [numero, setNumero] = useState("");
   const [telefone, setTelefone] = useState("");
-  const [validadorDados, setValidadorDados] = useState(false);
 
   const handleCpfChange = (event) => {
-    let novoCpf = event.targer.value
-    if (novoCpf.lenght === 11){
-      const novoCpf = event.target.value;
-      setCpf(novoCpf);
-      if (!validaCpf(novoCpf)) {
-        alert("CPF inválido!");
-        setCpf("");
-      }}
+    const novoCpf = event.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+    setCpf(novoCpf);
+    if (novoCpf.length === 11 && !validaCpf(novoCpf)) {
+      alert("CPF inválido!");
+      setCpf("");
+    }
   };
 
   const handleCepChange = async (event) => {
     const novoCep = event.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
     setCep(novoCep);
-
     if (novoCep.length === 8) {
       try {
         const response = await axios.get(
-          `https://viacep.com.br/ws/${novoCep}/json/`,
+          `https://viacep.com.br/ws/${novoCep}/json/`
         );
         const { logradouro, complemento, localidade, uf } = response.data;
         if (logradouro === undefined) {
-          alert("cep incorreto");
+          alert("CEP incorreto");
           setCep("");
           setEndereco("");
           setComplemento("");
@@ -47,72 +43,97 @@ const DadosVendedor = () => {
         }
       } catch (error) {
         console.error("Erro ao buscar endereço:", error);
+        setCep("");
         setEndereco("");
         setComplemento("");
       }
     }
-
- 
   };
 
   return (
-    <div>
-      <div>
-        <label htmlFor="nome">Nome:</label>
-        <input
-          type="text"
-          id="nome"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="cpf">CPF:</label>
-        <InputMask
-          mask="999.999.999-99"
-          value={cpf}
-          onChange={handleCpfChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="dataNascimento">Data de Nascimento:</label>
-        <InputMask
-          mask="99/99/9999"
-          value={dataNascimento}
-          onChange={(e) => setDataNascimento(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="cep">CEP:</label>
-        <InputMask mask="99999-999" value={cep} onChange={handleCepChange} />
-      </div>
-      <div>
-        <label htmlFor="endereco">Endereço:</label>
-        <input type="text" id="endereco" value={endereco} readOnly />
-      </div>
-      <div>
-        <label htmlFor="complemento">Complemento:</label>
-        <input type="text" id="complemento" value={complemento} />
-      </div>
-      <div>
-        <label htmlFor="numero">Número:</label>
-        <input
-          type="text"
-          id="numero"
-          value={numero}
-          onChange={(e) => setNumero(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="telefone">Telefone:</label>
-        <InputMask
-          mask="(99) 9 9999-9999"
-          value={telefone}
-          onChange={(e) => setTelefone(e.target.value)}
-        />
+    <fieldset className="border p-4">
+      <legend className="mb-4">Dados do Vendedor</legend>
+    <div className="container mt-5">
+      <div className="row">
+        <div className="col-md-6 mb-3">
+          <label htmlFor="nome" className="form-label">Nome:</label>
+          <input
+            type="text"
+            id="nome"
+            className="form-control"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
+        </div>
+        <div className="col-md-6 mb-3">
+          <label htmlFor="cpf" className="form-label">CPF:</label>
+          <InputMask
+            mask="999.999.999-99"
+            value={cpf}
+            onChange={handleCpfChange}
+            className="form-control"
+          />
+        </div>
+        <div className="col-md-6 mb-3">
+          <label htmlFor="dataNascimento" className="form-label">Data de Nascimento:</label>
+          <InputMask
+            mask="99/99/9999"
+            value={dataNascimento}
+            onChange={(e) => setDataNascimento(e.target.value)}
+            className="form-control"
+          />
+        </div>
+        <div className="col-md-6 mb-3">
+          <label htmlFor="cep" className="form-label">CEP:</label>
+          <InputMask
+            mask="99999-999"
+            value={cep}
+            onChange={handleCepChange}
+            className="form-control"
+          />
+        </div>
+        <div className="col-md-6 mb-3">
+          <label htmlFor="endereco" className="form-label">Endereço:</label>
+          <input
+            type="text"
+            id="endereco"
+            className="form-control"
+            value={endereco}
+            readOnly
+          />
+        </div>
+        <div className="col-md-6 mb-3">
+          <label htmlFor="complemento" className="form-label">Complemento:</label>
+          <input
+            type="text"
+            id="complemento"
+            className="form-control"
+            value={complemento}
+          />
+        </div>
+        <div className="col-md-6 mb-3">
+          <label htmlFor="numero" className="form-label">Número:</label>
+          <input
+            type="text"
+            id="numero"
+            className="form-control"
+            value={numero}
+            onChange={(e) => setNumero(e.target.value)}
+          />
+        </div>
+        <div className="col-md-6 mb-3">
+          <label htmlFor="telefone" className="form-label">Telefone:</label>
+          <InputMask
+            mask="(99) 9 9999-9999"
+            value={telefone}
+            onChange={(e) => setTelefone(e.target.value)}
+            className="form-control"
+          />
+        </div>
       </div>
     </div>
+    </fieldset>
   );
-}
+};
 
 export default DadosVendedor;
