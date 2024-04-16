@@ -60,7 +60,7 @@ const DadosComprador = (props) => {
                     <div className="container">
                         <div className="row my-4">
                             <div className="col-12 d-flex justify-content-around">
-                                <div className="col-7">
+                                <div className="col-6">
                                     <select className="form-select form-unidadesInfo" aria-label="Default select example" value={selectedSubUnidade} onChange={handleSubUnidadeChange}>
                                         <option value="" disabled>-- SELECIONE --</option>
                                         {infoOpcoes.map((op, index) => (
@@ -68,7 +68,7 @@ const DadosComprador = (props) => {
                                         ))}
                                     </select>
                                 </div>
-                                <div className="col-3">
+                                <div className="col-4">
                                     <div className="form-group">
                                         <label htmlFor="cnpj">CNPJ: {cnpj}</label>
                                     </div>
@@ -79,13 +79,13 @@ const DadosComprador = (props) => {
 
                     <div className="row my-4">
                         <div className="col-12 d-flex justify-content-around">
-                            <div className="col-6">
+                            <div className="col-4">
                                 <div className="form-group">
                                     <label htmlFor="nome">Nome: {nome}</label>
                                 </div>
                             </div>
 
-                            <div className="col-3">
+                            <div className="col-2">
                                 <div className="form-group">
                                     <label htmlFor="cep">CEP: {cep}</label>
                                 </div>

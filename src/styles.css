@@ -56,5 +56,10 @@ main{
 }
 
 .dadosPagamento{
+    margin-bottom: 25px;
+}
+
+
+.btnImprimir{
     margin-bottom: 100px;
 }
