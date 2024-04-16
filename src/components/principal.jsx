@@ -9,12 +9,14 @@ export const UserContext = React.createContext();
 const Principal = () => {
     const [data, setData] = useState(null);
     const [unidade, setUnidade] = useState();
+    const [dadosGerais, setDadosGerais] = useState();
     
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('/data/data.json');
+                setDadosGerais(response.data.detalhesUnidades)
                 const detalhesUnidades = response.data.detalhesUnidades;
                 const nomesUnidades = detalhesUnidades.map(unidade => Object.keys(unidade)[0]);
                 setData(nomesUnidades);
@@ -35,7 +37,7 @@ const Principal = () => {
 
     return (
         <>
-            <UserContext.Provider value={{data}}>
+            <UserContext.Provider value={{data,dadosGerais}}>
 
                 {tela === "unidade" ? <Unidade onClick={confirmarUnidade} dataCombo={data} />
                     : <Formulario unidadeSelecionada={unidade} />}

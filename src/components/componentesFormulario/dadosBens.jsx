@@ -1,14 +1,64 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from "react";
 
-import React from "react";
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+const DadosBens = () => {
+  const [quantidadeTotal, setQuantidadeTotal] = useState(0);
 
-const DadosComprador = () => {
+  function somarQuantidade(e) {
+    try {
+      let valorAux = Number(e.target.value);
+      setQuantidadeTotal((valorAnterior) => valorAnterior + valorAux);
+    } catch {
+      alert("No campo de quantidade, apenas números são aceitos");
+    }
+  }
 
-    return (
-        <>
-        </>
-    )
-}
+  return (
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <strong>Descrição dos bens</strong>
+          </div>
+          <div className="col">
+            <strong>Quantidade</strong>
+          </div>
+        </div>
 
+        {[...Array(8)].map((_, index) => (
+          <>
+            <div className="row " key={index}>
+              <div className="col d-flex">
+                <label>{index}. </label>
+                <input type="text" className="form-control" />
+              </div>
+              <div className="col">
+                <input
+                  type="number"
+                  className="form-control"
+                  onChange={(event) => somarQuantidade(event)}
+                />
+              </div>
+            </div>
+          </>
+        ))}
+        <div className="row flex-wrap d-flex">
+          <div className="col">
+            <label>Peso Total: </label>
+            <input type="text" className="form-control" />
+          </div>
 
-export default DadosComprador;
+          <div className="col">
+            <label>Valor Total: </label>
+            <input type="text" className="form-control" />
+          </div>
+        </div>
+        <div className="col d-flex">
+          <label>Quantidade Total: {quantidadeTotal} </label>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default DadosBens;
