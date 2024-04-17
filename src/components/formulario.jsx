@@ -4,8 +4,7 @@ import DadosBens from "./componentesFormulario/dadosBens";
 import DadosComprador from "./componentesFormulario/dadosComprador";
 import DadosVendedor from "./componentesFormulario/dadosVendedor";
 import DadosPagamento from "./componentesFormulario/dadosPagamento";
-import DadosRodape from "./componentesFormulario/dadosRodape";
-
+import '../styles.css';
 
 
 const Formulario = (props) => {
@@ -31,9 +30,13 @@ const Formulario = (props) => {
                     <DadosPagamento />
                 </section>
                 
-                <section className="dadosRodape">
-                    <DadosRodape />
+                <section className="btnImprimir d-flex justify-content-center">
+                    <button className="btn btn-success mt-6 col-3 ">Imprimir</button>
                 </section>
+
+               
+                
+
             </div>
    )
 } 
