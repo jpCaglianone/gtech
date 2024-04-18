@@ -1,15 +1,16 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Unidade from './unidade';
-import Formulario from './formulario'
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
+import { DadosFormulario } from '../App';
 
 export const UserContext = React.createContext();
 
 const Principal = () => {
     const [data, setData] = useState(null);
-    const [unidade, setUnidade] = useState();
-    const [dadosGerais, setDadosGerais] = useState();
+    // const [unidade, setUnidade] = useState();
+    const {dadosGerais, setDadosGerais} = useContext(DadosFormulario);
+    const {itens, setItens} = useContext(DadosFormulario);
     
 
     useEffect(() => {
@@ -20,28 +21,23 @@ const Principal = () => {
                 const detalhesUnidades = response.data.detalhesUnidades;
                 const nomesUnidades = detalhesUnidades.map(unidade => Object.keys(unidade)[0]);
                 setData(nomesUnidades);
+
+                const response2 = await axios.get('/data/itens.json');
+                setItens(response2.data.itens)
+                console.log(itens)
             } catch (error) {
                 console.error('Erro ao buscar os dados:', error);
             }
-        };
+       };
 
         fetchData();
     }, []);
-
-    const [tela, setTela] = useState("unidade");
-
-    function confirmarUnidade(unidadeSelecionada) {
-        setTela("formulario");
-        setUnidade(unidadeSelecionada)
-    }
 
     return (
         <>
             <UserContext.Provider value={{data,dadosGerais}}>
 
-                {tela === "unidade" ? <Unidade onClick={confirmarUnidade} dataCombo={data} />
-                    : <Formulario unidadeSelecionada={unidade} />}
-
+               <Unidade dataCombo={data} />
 
             </UserContext.Provider>
         </>

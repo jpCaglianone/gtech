@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ContractComponent from './components/ContractComponent';
 import Home from "./components/home";
 import React, { useState, createContext } from 'react';
+import Formulario from './components/formulario'
 
 export const DadosFormulario = createContext();
 
@@ -29,7 +30,12 @@ function App() {
   const [numero, setNumero] = useState("");
   const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
-  const [dadosBens, setDadosBens] = useState([]);
+  const [itens, setItens] = useState([]);
+  const [dadosGerais, setDadosGerais] = useState([]);
+  const [valorTotal, setValorTotal] = useState();
+  const [pesoTotal, setPesoTotal] = useState(0);
+  const[unidadeSelecionada, setUnidadeSelecionada] = useState();
+  const [dadosBens, setDadosBens] = useState(Array.from({ length: 9 }, () => ({ descricao: "", quantidade: "" })));
 
 
   return (
@@ -77,11 +83,21 @@ function App() {
       email, 
       setEmail,
       dadosBens,
-      setDadosBens
+      setDadosBens,
+      dadosGerais, 
+      setDadosGerais,
+      itens,
+      setItens,
+      valorTotal,
+      setValorTotal,
+      unidadeSelecionada, 
+      setUnidadeSelecionada,
+      pesoTotal, setPesoTotal
     }}>
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route path="/formulario" element={<Formulario />} />
           <Route path="/resultado" element={<ContractComponent />} />
         </Routes>
       </Router>

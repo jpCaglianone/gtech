@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { UserContext } from "../principal";
 import { DadosFormulario } from '../../App';
+import { UserContext } from "../principal";
 
 const DadosComprador = (props) => {
-    const { dadosGerais } = useContext(UserContext);
-    const [unid] = useState(props.unidade);
+    const { dadosGerais } = useContext(DadosFormulario);
+    const {unidadeSelecionada} = useContext(DadosFormulario);
     const [selectedSubUnidade, setSelectedSubUnidade] = useState('');
     const [subUnidades, setSubUnidades] = useState([]);
     const [infoOpcoes, setInfoOpcoes] = useState([]);
@@ -16,16 +16,16 @@ const DadosComprador = (props) => {
     const [infoAux, setInfoAux] = useState();
    
     useEffect(() => {
-        // Verifica se a unidade está selecionada e os dados gerais estão disponíveis
-        if (unid && dadosGerais) {
+        if (unidadeSelecionada && dadosGerais) {
+            console.log(dadosGerais)
             for (let i in dadosGerais) {
-                if (Object.keys(dadosGerais[i]).toString().toLowerCase() === unid.toLowerCase()) {
+                if (Object.keys(dadosGerais[i]).toString().toLowerCase() === unidadeSelecionada.toLowerCase()) {
                     setSubUnidades(dadosGerais[i]);
                     break;
                 }
             }
         }
-    }, [unid, dadosGerais]);
+    }, [unidadeSelecionada, dadosGerais]);
 
     useEffect(() => {
         const newInfoOpcoes = [];
@@ -33,16 +33,16 @@ const DadosComprador = (props) => {
             let aux = subUnidades[i];
             setInfoAux(aux);
             for (let j in aux) {
-                const unidMaiuscula = unid.charAt(0).toUpperCase() + unid.slice(1);
+                const unidMaiuscula = unidadeSelecionada.charAt(0).toUpperCase() + unidadeSelecionada.slice(1);
                 newInfoOpcoes.push(unidMaiuscula + " | " + aux[j].extensao);
             }
         }
         setInfoOpcoes(newInfoOpcoes);
-    }, [subUnidades, unid]);
+    }, [subUnidades, unidadeSelecionada]);
 
     const handleSubUnidadeChange = (e) => {
         let index = e.target.value;
-        const selectedText = e.target.options[e.target.selectedIndex].text;
+        let selectedText = e.target.options[e.target.selectedIndex].text;
         setSelectedSubUnidade(selectedText);
         setEnderecoComprador(infoAux[index].endereco);
         setNomeComprador(infoAux[index].nomeFantasia);
@@ -59,10 +59,12 @@ const DadosComprador = (props) => {
                         <div className="row my-4">
                             <div className="col-12 d-flex justify-content-around">
                                 <div className="col-6">
-                                    <select className="form-select form-unidadesInfo" aria-label="Default select example" value={selectedSubUnidade} onChange={handleSubUnidadeChange}>
-                                        <option value="" disabled>-- SELECIONE --</option>
+                                    <select className="form-select form-unidadesInfo" 
+                                            aria-label="Default select example"  
+                                            onChange={handleSubUnidadeChange}>
+                                        <option value="" disabled selected>-- SELECIONE --</option>
                                         {infoOpcoes.map((op, index) => (
-                                            <option key={index} value={index}>{op}</option>
+                                            <option key={index} value={index} label={op}>{selectedSubUnidade}</option>
                                         ))}
                                     </select>
                                 </div>

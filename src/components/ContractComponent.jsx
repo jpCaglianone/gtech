@@ -4,7 +4,6 @@ import { DadosFormulario } from '../App';
 
 const ContractComponent = () => {
 
-
   const {
     quantidadeTotal,
     selectedSubUnidade,
@@ -26,24 +25,31 @@ const ContractComponent = () => {
     complemento,
     numero,
     telefone,
-    email
-
+    email,
+    dadosBens,
+    setPixChecked,
+    setTransfChecked,
+    pagamentoBancario,
+    setPagamentoBancario,
+    pagamentoPix,
+    setPagamentoPix,
+    setDinChecked,
+    valorTotal,
+    pesoTotal
   } = useContext(DadosFormulario);
 
-  
   function ativarPrint() {
-    setTimeout(function() {
+    setTimeout(function () {
       window.print();
     }, 3000);
   }
 
   useEffect(() => {
     ativarPrint();
-  },[])
- 
+  }, [])
 
   const [dia] = useState(new Date().getDate());
-  const [mes] = useState(new Date().getMonth() + 1); 
+  const [mes] = useState(new Date().getMonth() + 1);
   const [ano] = useState(new Date().getFullYear());
 
   const meses = [
@@ -137,12 +143,12 @@ const ContractComponent = () => {
       </p>
       <p className="c31 c11">
         <span className="c0">Dados dos Bens:
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           Quantidade de Bens: {quantidadeTotal}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          Peso total: varPesoTotal</span>
+          Peso total: {pesoTotal}</span>
       </p>
       <table className="c25">
         <tbody>
@@ -151,7 +157,7 @@ const ContractComponent = () => {
               <p className="c16"><span className="c3">Descrição dos bens</span></p>
             </td>
             <td className="c18">
-              <p className="c5"><span className="c33">varDescBensA</span></p>
+              <p className="c5"><span className="c33">{dadosBens[0].descricao}</span></p>
             </td>
 
           </tr>
@@ -160,7 +166,7 @@ const ContractComponent = () => {
               <p className="c16"><span className="c3">Descrição dos bens</span></p>
             </td>
             <td className="c18">
-              <p className="c5"><span className="c33">varDescBensA</span></p>
+              <p className="c5"><span className="c33">{dadosBens[1].descricao}</span></p>
             </td>
 
           </tr><tr className="c36">
@@ -168,7 +174,7 @@ const ContractComponent = () => {
               <p className="c16"><span className="c3">Descrição dos bens</span></p>
             </td>
             <td className="c18">
-              <p className="c5"><span className="c33">varDescBensA</span></p>
+              <p className="c5"><span className="c33">{dadosBens[2].descricao}</span></p>
             </td>
 
           </tr><tr className="c36">
@@ -176,7 +182,7 @@ const ContractComponent = () => {
               <p className="c16"><span className="c3">Descrição dos bens</span></p>
             </td>
             <td className="c18">
-              <p className="c5"><span className="c33">varDescBensA</span></p>
+              <p className="c5"><span className="c33">{dadosBens[3].descricao}</span></p>
             </td>
 
           </tr><tr className="c36">
@@ -184,7 +190,7 @@ const ContractComponent = () => {
               <p className="c16"><span className="c3">Descrição dos bens</span></p>
             </td>
             <td className="c18">
-              <p className="c5"><span className="c33">varDescBensA</span></p>
+              <p className="c5"><span className="c33">{dadosBens[4].descricao}</span></p>
             </td>
 
           </tr><tr className="c36">
@@ -192,7 +198,7 @@ const ContractComponent = () => {
               <p className="c16"><span className="c3">Descrição dos bens</span></p>
             </td>
             <td className="c18">
-              <p className="c5"><span className="c33">varDescBensA</span></p>
+              <p className="c5"><span className="c33">{dadosBens[5].descricao}</span></p>
             </td>
 
           </tr><tr className="c36">
@@ -200,7 +206,7 @@ const ContractComponent = () => {
               <p className="c16"><span className="c3">Descrição dos bens</span></p>
             </td>
             <td className="c18">
-              <p className="c5"><span className="c33">varDescBensA</span></p>
+              <p className="c5"><span className="c33">{dadosBens[6].descricao}</span></p>
             </td>
 
           </tr><tr className="c36">
@@ -208,15 +214,7 @@ const ContractComponent = () => {
               <p className="c16"><span className="c3">Descrição dos bens</span></p>
             </td>
             <td className="c18">
-              <p className="c5"><span className="c33">varDescBensA</span></p>
-            </td>
-
-          </tr><tr className="c36">
-            <td className="c22">
-              <p className="c16"><span className="c3">Descrição dos bens</span></p>
-            </td>
-            <td className="c18">
-              <p className="c5"><span className="c33">varDescBensA</span></p>
+              <p className="c5"><span className="c33">{dadosBens[7].descricao}</span></p>
             </td>
 
           </tr>
@@ -229,10 +227,10 @@ const ContractComponent = () => {
         <tbody>
           <tr className="c34">
             <td className="c39">
-              <p className="c5"><span className="c20">O valor total é de: R$ varValor</span></p>
+              <p className="c5"><span className="c20">O valor total é de: </span></p>
             </td>
             <td className="c38">
-              <p className="c5"><span className="c3">varValor</span></p>
+              <p className="c5"><span className="c3">R$ {valorTotal}</span></p>
             </td>
           </tr>
         </tbody>
@@ -241,19 +239,45 @@ const ContractComponent = () => {
         <span className="c3">O VENDEDOR concorda em receber o valor acima descrito, que será pago pelo COMPRADOR da seguinte forma:</span>
       </p>
       <p className="c5 c11">
-        <span className="c3">Dinheiro varD
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span className="c3">Dinheiro <strong>{dinChecked ? " X " : " "}</strong>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          PIX varP
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Pix <strong> {pixChecked ? " X " : " "} </strong>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           Transferência Bancária
-          varT</span>
+          <strong>{transfChecked ? " X " : " "} </strong></span>
       </p>
+
+      <tbody>
+        <tr className="c34">
+
+          <td className="c39a">
+            <p className="c5">
+              <span className="c20"> Agencia: {transfChecked ? pagamentoBancario.agencia : "   "}
+              </span> &nbsp;&nbsp;<span className="c20">Conta: {transfChecked ? pagamentoBancario.conta : "   "}</span></p>
+            <p className="c5"><span className="c3">Banco: {transfChecked ? pagamentoBancario.bancoTransf : "   "}</span></p>
+          </td>
+
+          <td className="c38">
+            <p className="c5">
+              <span className="c20"> Chave Pix: {pixChecked ? pagamentoPix.chavePix : "   "}</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <span className="c3">Banco: {pixChecked ? pagamentoPix.bancoPix : "   "}</span>
+               </p>
+            <p className="c5">
+              <span className="c3">agencia: {pixChecked ? pagamentoPix.agenciaPix : "   "}</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <span className="c20">Conta: {pixChecked ? pagamentoPix.contaPix : "   "}</span>
+            </p>
+          </td>
+
+        </tr>
+      </tbody>
       <table className="c25">
         <tbody>
 
@@ -270,14 +294,14 @@ const ContractComponent = () => {
             O VENDEDOR está ciente que caso oculte ou falte com a verdade a respeito da procedência legal dos bens negociados neste contrato, violará as leis aplicáveis ao comércio de produtos, concorrendo ao crime disposto no Artigo 180 do Código Penal e se compromete a indenizar e isentar de toda e qualquer responsabilidade legal o COMPRADOR no caso de as joias aqui negociadas serem posteriormente determinadas como produto de origem ilícita.
           </span>
         </p>
-
       </div>
+
       <p className="c16 c11">
         <span className="c0">DISPOSIÇÕES FINAIS</span>
       </p>
+
       <p className="c13 c11">
         <span className="c0">
-
           Este contrato representa o acordo completo entre as partes. E foi redigido em consonância ao disposto no Artigo 5º da Lei Ordinária 7005 de maio de 2015.
           Qualquer alteração a este contrato deve ser feita por escrito e assinada por ambas as partes.
           O VENDEDOR declara ter recebido a importância negociada neste contrato, por parte do COMPRADOR e, portanto, transfere neste ato a propriedade dos bens ao COMPRADOR, dando QUITAÇÃO AO CONTRATO em conformidade com os Artigos 481 e 1267 do Código de Processo Civil.
@@ -285,11 +309,8 @@ const ContractComponent = () => {
         </span>
       </p>
       <p className="c16 c11"><span className="c3">RIO DE JANEIRO {dia} de {meses[mes]} de {ano}</span></p>
-      <p className="c16 c11"><span className="c3">___________________________________________</span></p>
+      <p className="c16 c11"><span className="c3">___________________________________________________</span></p>
       <p className="c16 c11"><span className="c43">ASSINATURA DO VENDEDOR</span></p>
-
-
-
     </div>
   );
 };

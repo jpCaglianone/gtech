@@ -3,11 +3,42 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { DadosFormulario } from '../../App';
 
 const DadosPagamento = () => {
-  const {pixChecked, setPixChecked} = useContext(DadosFormulario);
-  const {transfChecked, setTransfChecked} = useContext(DadosFormulario);
-  const {dinChecked, setDinChecked} = useContext(DadosFormulario);
-  const {pagamentoBancario, setPagamentoBancario} = useContext(DadosFormulario);
-  const {pagamentoPix, setPagamentoPix} = useContext(DadosFormulario);
+  const {
+    pixChecked, setPixChecked,
+    transfChecked, setTransfChecked,
+    pagamentoBancario, setPagamentoBancario,
+    pagamentoPix, setPagamentoPix,
+    dinChecked, setDinChecked,
+    cpf, telefone
+  } = useContext(DadosFormulario);
+
+  console.log(pagamentoBancario)
+
+  const handleInputChange = (e, field, type) => {
+    const value = e.target.value;
+    if (type === "bancario") {
+      setPagamentoBancario(prevState => ({
+        ...prevState,
+        [field]: value
+      }));
+    } else if (type === "pix") {
+      setPagamentoPix(prevState => ({
+        ...prevState,
+        [field]: value
+      }));
+    }
+  };
+
+  function pixChange(e, field) {
+    let evento = e.target.value;
+    let value = evento === "CPF" ? cpf : evento === "Telefone" ? telefone : "";
+    if (evento === "CPF" || evento === "Telefone") {
+      setPagamentoPix(prevState => ({
+        ...prevState,
+        [field]: value
+      }));
+    }
+  }
 
   return (
     <div className="container mt-4">
@@ -18,13 +49,16 @@ const DadosPagamento = () => {
               className="form-check-input"
               type="checkbox"
               id="dinheiroCheckbox"
+              checked={dinChecked}
+              onChange={() => {
+                setDinChecked(!dinChecked);
+              }}
             />
             <label className="form-check-label" htmlFor="dinheiroCheckbox">
               Dinheiro
             </label>
           </div>
-      
-      </div>
+        </div>
         <div className="col-sm-3">
           <div className="form-check">
             <input
@@ -32,7 +66,9 @@ const DadosPagamento = () => {
               type="checkbox"
               id="pixCheckbox"
               checked={pixChecked}
-              onChange={() => setPixChecked(!pixChecked)}
+              onChange={() => {
+                setPixChecked(!pixChecked);
+              }}
             />
             <label className="form-check-label" htmlFor="pixCheckbox">
               Pix
@@ -46,7 +82,9 @@ const DadosPagamento = () => {
               type="checkbox"
               id="transfCheckbox"
               checked={transfChecked}
-              onChange={() => setTransfChecked(!transfChecked)}
+              onChange={() => {
+                setTransfChecked(!transfChecked);
+              }}
             />
             <label className="form-check-label" htmlFor="transfCheckbox">
               Transferência bancária
@@ -57,20 +95,67 @@ const DadosPagamento = () => {
 
       <div className="row mt-4">
         {pixChecked && (
+
           <fieldset className="col-sm-6" disabled={!pixChecked}>
+
             <legend>Pix</legend>
-            <div className="mb-3">
-              <label htmlFor="chavePix" className="form-label">
-                Chave Pix:
-              </label>
-              <input type="text" className="form-control" id="chavePix" />
+
+            <label htmlFor="chavePix" className="form-label">
+              Chave Pix:
+            </label>
+
+            <div className="col-12 mb-3 d-flex">
+             
+              <input
+                type="text"
+                className="form-control"
+                id="chavePix"
+                onChange={(e) => handleInputChange(e, "chavePix", "pix")}
+                value={pagamentoPix.chavePix || ""}
+              />
+              <select className="form-select form-unidadesInfo"
+                onChange={(e) => pixChange(e, "chavePix")}
+                aria-label="Default select example"
+              >
+                <option value="" disabled selected>-- SELECIONE --</option>
+                <option value="CPF">CPF</option>
+                <option value="Telefone">Telefone</option>
+              </select>
             </div>
-            <div className="mb-3">
-              <label htmlFor="bancoPix" className="form-label">
-                Banco:
-              </label>
-              <input type="text" className="form-control" id="bancoPix" />
-            </div>
+
+            <div className="container d-flex ">
+
+              <div className="col-6">
+                <label htmlFor="bancoPix" className="form-label">
+                  Banco:
+                </label>
+                <div className="col-11 mb-3 d-flex">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="bancoPix"
+                    onChange={(e) => handleInputChange(e, "bancoPix", "pix")}
+                    value={pagamentoPix.bancoPix || ""}
+                  />
+                </div>
+                </div>
+
+                <div className="col-6">
+                  <label htmlFor="agenciaPix" className="form-label">
+                    Agencia:
+                  </label>
+                  <div className="col-11 mb-3 d-flex">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="agenciaPix"
+                      onChange={(e) => handleInputChange(e, "agenciaPix", "pix")}
+                      value={pagamentoPix.agenciaPix || ""}
+                    />
+                  </div>
+                </div>
+               </div>
+
           </fieldset>
         )}
 
@@ -81,25 +166,41 @@ const DadosPagamento = () => {
               <label htmlFor="bancoTransf" className="form-label">
                 Banco:
               </label>
-              <input type="text" className="form-control" id="bancoTransf" />
+              <input
+                type="text"
+                className="form-control"
+                id="bancoTransf"
+                onChange={(e) => handleInputChange(e, "bancoTransf", "bancario")}
+                value={pagamentoBancario.bancoTransf || ""}
+              />
             </div>
             <div className="mb-3">
               <label htmlFor="agencia" className="form-label">
                 Agência:
               </label>
-              <input type="text" className="form-control" id="agencia" />
+              <input
+                type="text"
+                className="form-control"
+                id="agencia"
+                onChange={(e) => handleInputChange(e, "agencia", "bancario")}
+                value={pagamentoBancario.agencia || ""}
+              />
             </div>
             <div className="mb-3">
               <label htmlFor="conta" className="form-label">
                 Conta:
               </label>
-              <input type="text" className="form-control" id="conta" />
+              <input
+                type="text"
+                className="form-control"
+                id="conta"
+                onChange={(e) => handleInputChange(e, "conta", "bancario")}
+                value={pagamentoBancario.conta || ""}
+              />
             </div>
           </fieldset>
         )}
       </div>
-
-      
     </div>
   );
 };
