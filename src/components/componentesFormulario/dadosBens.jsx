@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { DadosFormulario } from '../../App';
+
 const DadosBens = () => {
+
   const { quantidadeTotal,
     setQuantidadeTotal,
     itens,
@@ -36,6 +38,8 @@ const DadosBens = () => {
   function handlePeso(e) {
     setPesoTotal(e.target.value)
   }
+
+  console.log(dadosBens)
 
   return (
     <>
