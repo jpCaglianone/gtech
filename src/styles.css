@@ -63,3 +63,20 @@ main{
 .btnImprimir{
     margin-bottom: 100px;
 }
+
+.btn-danger{
+    margin-top: 25px;
+    margin-left: 155px;
+}
+
+@media (max-width: 767px) {
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .mobile{
+        display: flex;
+        flex-wrap: wrap;
+        border: 2px solid red;
+    }
+  }

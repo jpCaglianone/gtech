@@ -1,20 +1,20 @@
 import React, { useEffect, useState, useContext } from "react";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { DadosFormulario } from '../../App';
-import { UserContext } from "../principal";
+import "../../styles.css";
 
 const DadosComprador = (props) => {
     const { dadosGerais } = useContext(DadosFormulario);
-    const {unidadeSelecionada} = useContext(DadosFormulario);
+    const { unidadeSelecionada } = useContext(DadosFormulario);
     const [selectedSubUnidade, setSelectedSubUnidade] = useState('');
     const [subUnidades, setSubUnidades] = useState([]);
     const [infoOpcoes, setInfoOpcoes] = useState([]);
-    const {nomeComprador, setNomeComprador} = useContext(DadosFormulario);
-    const {cepComprador, setCepComprador}= useContext(DadosFormulario);
-    const {enderecoComprador, setEnderecoComprador} = useContext(DadosFormulario);
-    const {cnpj, setCnpj} = useContext(DadosFormulario);
+    const { nomeComprador, setNomeComprador } = useContext(DadosFormulario);
+    const { cepComprador, setCepComprador } = useContext(DadosFormulario);
+    const { enderecoComprador, setEnderecoComprador } = useContext(DadosFormulario);
+    const { cnpj, setCnpj } = useContext(DadosFormulario);
     const [infoAux, setInfoAux] = useState();
-   
+
     useEffect(() => {
         if (unidadeSelecionada && dadosGerais) {
             console.log(dadosGerais)
@@ -52,53 +52,48 @@ const DadosComprador = (props) => {
 
     return (
         <>
-            <fieldset className="border p-4 my-3">
-                <legend className="mb-4">Dados do Comprador</legend>
-                <div className="container ">
-                    <div className="container">
-                        <div className="row my-4">
-                            <div className="col-12 d-flex justify-content-around">
-                                <div className="col-6">
-                                    <select className="form-select form-unidadesInfo" 
-                                            aria-label="Default select example"  
-                                            onChange={handleSubUnidadeChange}>
-                                        <option value="" disabled selected>-- SELECIONE --</option>
-                                        {infoOpcoes.map((op, index) => (
-                                            <option key={index} value={index} label={op}>{selectedSubUnidade}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="col-4">
-                                    <div className="form-group">
-                                        <label htmlFor="cnpj">CNPJ: {cnpj}</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="row my-4">
-                        <div className="col-12 d-flex justify-content-around">
-                            <div className="col-4">
-                                <div className="form-group">
-                                    <label htmlFor="nome">Nome: {nomeComprador}</label>
-                                </div>
-                            </div>
-
-                            <div className="col-2">
-                                <div className="form-group">
-                                    <label htmlFor="cep">CEP: {cepComprador}</label>
-                                </div>
-                            </div>
-                            <div className="col-6">
-                                <div className="form-group">
-                                    <label htmlFor="endereco">Endereço: {enderecoComprador}</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <fieldset className="border p-4 my-3">
+    <legend className="mb-4">Dados do Comprador</legend>
+    <div className="container">
+        <div className="row my-4 flex-wrap">
+            <div className="col-12 col-sm-6 mb-3"> {/* Defina a largura para ocupar 100% na tela pequena e metade na tela grande */}
+                <select className="form-select form-unidadesInfo" 
+                        aria-label="Default select example"  
+                        onChange={handleSubUnidadeChange}>
+                    <option value="" disabled selected>-- SELECIONE --</option>
+                    {infoOpcoes.map((op, index) => (
+                        <option key={index} value={index} label={op}>{selectedSubUnidade}</option>
+                    ))}
+                </select>
+            </div>
+            <div className="col-12 col-sm-6 mb-3"> {/* Defina a largura para ocupar 100% na tela pequena e metade na tela grande */}
+                <div className="d-flex align-items-center">
+                    <label htmlFor="nome">Nome:</label>
+                    <span>{nomeComprador}</span>
                 </div>
-            </fieldset>
+            </div>
+            <div className="col-12 col-sm-6 mb-3"> {/* Defina a largura para ocupar 100% na tela pequena e metade na tela grande */}
+                <div className="d-flex  align-items-center">
+                    <label htmlFor="cep">CEP:</label>
+                    <span>{cepComprador}</span>
+                </div>
+            </div>
+            <div className="col-12 col-sm-6 mb-3">
+                <div className="d-flex align-items-center">
+                    <label htmlFor="endereco">Endereço:</label>
+                    <span>{enderecoComprador}</span>
+                </div>
+            </div>
+            <div className="col-12 col-sm-6 mb-3"> {/* Defina a largura para ocupar 100% na tela pequena e metade na tela grande */}
+                <div className="d-flex align-items-center">
+                    <label htmlFor="cnpj">CNPJ: </label>
+                    <span>{cnpj}</span> 
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
         </>
     )
 }

@@ -59,24 +59,27 @@ const ContractComponent = () => {
   ];
 
   return (
-    <div className="c19 doc-content">
+    <>
+    <div className="c19 doc-content page-break">
       <p className="c16 c11">
+        <img alt="" src="/assets/image2.png" style={{ width: '170px', height: '69px' , marginRight:'12,5px'}} />
         <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
-        <img alt="" src="images/image2.png" style={{ width: '170px', height: '69px' }} />
-        <img alt="" src="images/image1.png" style={{ width: '170px', height: '67px' }} />
+        <img alt="" src="/assets/image1.png" style={{ width: '170px', height: '69px', marginLeft:'12,5px' }} />
       </p>
 
       <p className="c16 c11">
         <span className="c0">PARTES CONTRATANTES</span>
       </p>
-      <p className="c5 c11">
+      <p className="c5 c11"> 
         <span className="c8">COMPRADOR:</span>
       </p>
       <p className="c5 c11">
-        <span className="c3">Nome:{nomeComprador}</span>
+        <span className="c3">Nome:{nomeComprador}</span> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span className="c3">CNPJ: {cnpj}</span>
       </p>
       <p className="c5 c11 br">
-        <span className="c3">Endereço: {enderecoComprador} | {cepComprador} </span> <span className="c3">CNPJ: {cnpj}</span>
+        <span className="c3">Endereço: {enderecoComprador} | {cepComprador} </span> <span className="c3"></span>
       </p>
       <p className="c5 c11 ">
         <span className="c8">VENDEDOR:</span>
@@ -126,7 +129,7 @@ const ContractComponent = () => {
             <td className="c17">
               <p className="c5"><span className="c3">{telefone}</span></p>
             </td>
-            <td className="c48" colSpan="2">
+            <td className="c48" >
               <p className="c5"><span className="c3">Data de nascimento</span></p>
             </td>
             <td className="c29">
@@ -209,13 +212,17 @@ const ContractComponent = () => {
               <p className="c5"><span className="c33">{dadosBens[6].descricao}</span></p>
             </td>
 
-          </tr><tr className="c36">
+          </tr>
+          
+          <tr className="c36">
             <td className="c22">
               <p className="c16"><span className="c3">Descrição dos bens</span></p>
             </td>
             <td className="c18">
               <p className="c5"><span className="c33">{dadosBens[7].descricao}</span></p>
             </td>
+
+            
 
           </tr>
         </tbody>
@@ -312,6 +319,8 @@ const ContractComponent = () => {
       <p className="c16 c11"><span className="c3">___________________________________________________</span></p>
       <p className="c16 c11"><span className="c43">ASSINATURA DO VENDEDOR</span></p>
     </div>
+
+    </>
   );
 };
 

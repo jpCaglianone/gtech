@@ -6,7 +6,7 @@ import { DadosFormulario } from '../App';
 
 const Unidade = (props) => {
     const [habilitarBotao, setHabilitarBotao] = useState(true);
-    const {setUnidadeSelecionada} = useContext(DadosFormulario)
+    const { setUnidadeSelecionada } = useContext(DadosFormulario)
 
     function seletorUnidade(event) {
         const unid = event.target.value.toLowerCase();
@@ -32,22 +32,22 @@ const Unidade = (props) => {
             <main>
                 <div className="container col-8 mx-auto text-center">
                     <h2>Antes de continuar, escolha a unidade: </h2>
-                    <div className='col-6 mx-auto text-center select-unidade'>
+                    <div className='col-12 col-md-6 mx-auto text-center select-unidade'> {/* Alteração na classe aqui */}
                         <div className="input-group">
                             <select className="form-select" aria-label="Default select example" onChange={seletorUnidade}>
                                 <option value="" selected>-- SELECIONE --</option>
                                 {options}
                             </select>
+                        </div>
+                        <div className="mt-3"> {/* Adicionando espaço para o botão em telas menores */}
                             <Link to="/formulario">
-                                <button className='button btn btn-warning'
-                                    disabled={habilitarBotao}>Continuar</button>
+                                <button className='button btn btn-warning' disabled={habilitarBotao}>Continuar</button>
                             </Link>
                         </div>
-
                     </div>
-
                 </div>
             </main>
+
         </>
     );
 };
