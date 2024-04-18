@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import InputMask from "react-input-mask";
 import validaCpf from "../../js/validadorCpf";
+import { DadosFormulario } from '../../App';
 
 const DadosVendedor = () => {
-  const [nome, setNome] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [dataNascimento, setDataNascimento] = useState("");
-  const [cep, setCep] = useState("");
-  const [endereco, setEndereco] = useState("");
-  const [complemento, setComplemento] = useState("");
-  const [numero, setNumero] = useState("");
-  const [telefone, setTelefone] = useState("");
+  const {
+    nomeVendedor, setNomeVendedor,cpf, setCpf,
+    dataNascimento, setDataNascimento,
+    cepVendedor, setCepVendedor,
+    enderecoVendedor, setEnderecoVendedor,
+    complemento, setComplemento,
+    numero, setNumero, telefone, setTelefone,
+    email, setEmail
+  } = useContext(DadosFormulario);
 
   const handleCpfChange = (event) => {
-    const novoCpf = event.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+    const novoCpf = event.target.value.replace(/\D/g, "");
     setCpf(novoCpf);
     if (novoCpf.length === 11 && !validaCpf(novoCpf)) {
       alert("CPF inválido!");
@@ -24,8 +26,8 @@ const DadosVendedor = () => {
   };
 
   const handleCepChange = async (event) => {
-    const novoCep = event.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
-    setCep(novoCep);
+    const novoCep = event.target.value.replace(/\D/g, ""); 
+    setCepVendedor(novoCep);
     if (novoCep.length === 8) {
       try {
         const response = await axios.get(
@@ -34,17 +36,17 @@ const DadosVendedor = () => {
         const { logradouro, complemento, localidade, uf } = response.data;
         if (logradouro === undefined) {
           alert("CEP incorreto");
-          setCep("");
-          setEndereco("");
+          setCepVendedor("");
+          setEnderecoVendedor("");
           setComplemento("");
         } else {
-          setEndereco(`${logradouro}, ${localidade} - ${uf}`);
+          setEnderecoVendedor(`${logradouro}, ${localidade} - ${uf}`);
           setComplemento(complemento);
         }
       } catch (error) {
         console.error("Erro ao buscar endereço:", error);
-        setCep("");
-        setEndereco("");
+        setCepVendedor("");
+        setEnderecoVendedor("");
         setComplemento("");
       }
     }
@@ -61,14 +63,25 @@ const DadosVendedor = () => {
             type="text"
             id="nome"
             className="form-control"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
+            value={nomeVendedor}
+            onChange={(e) => setNomeVendedor(e.target.value)}
+          />
+        </div>
+        <div className="col-md-6 mb-3">
+          <label htmlFor="email" className="form-label">Email:</label>
+          <input
+            type="text"
+            id="Email"
+            className="form-control"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="cpf" className="form-label">CPF:</label>
           <InputMask
             mask="999.999.999-99"
+            inputMode="numeric"
             value={cpf}
             onChange={handleCpfChange}
             className="form-control"
@@ -78,6 +91,7 @@ const DadosVendedor = () => {
           <label htmlFor="dataNascimento" className="form-label">Data de Nascimento:</label>
           <InputMask
             mask="99/99/9999"
+            inputMode="numeric"
             value={dataNascimento}
             onChange={(e) => setDataNascimento(e.target.value)}
             className="form-control"
@@ -87,7 +101,8 @@ const DadosVendedor = () => {
           <label htmlFor="cep" className="form-label">CEP:</label>
           <InputMask
             mask="99999-999"
-            value={cep}
+            inputMode="numeric"
+            value={cepVendedor}
             onChange={handleCepChange}
             className="form-control"
           />
@@ -98,7 +113,7 @@ const DadosVendedor = () => {
             type="text"
             id="endereco"
             className="form-control"
-            value={endereco}
+            value={enderecoVendedor}
             readOnly
           />
         </div>
@@ -109,6 +124,7 @@ const DadosVendedor = () => {
             id="complemento"
             className="form-control"
             value={complemento}
+            onChange={(e) => setComplemento(e.target.value)}
           />
         </div>
         <div className="col-md-6 mb-3">
@@ -125,6 +141,7 @@ const DadosVendedor = () => {
           <label htmlFor="telefone" className="form-label">Telefone:</label>
           <InputMask
             mask="(99) 9 9999-9999"
+            inputMode="numeric"
             value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
             className="form-control"

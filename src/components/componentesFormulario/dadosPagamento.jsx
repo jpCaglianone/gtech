@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { DadosFormulario } from '../../App';
 
 const DadosPagamento = () => {
-  const [pixChecked, setPixChecked] = useState(false);
-  const [transfChecked, setTransfChecked] = useState(false);
-  const [dinChecked, setDinChecked] = useState(false);
+  const {pixChecked, setPixChecked} = useContext(DadosFormulario);
+  const {transfChecked, setTransfChecked} = useContext(DadosFormulario);
+  const {dinChecked, setDinChecked} = useContext(DadosFormulario);
+  const {pagamentoBancario, setPagamentoBancario} = useContext(DadosFormulario);
+  const {pagamentoPix, setPagamentoPix} = useContext(DadosFormulario);
 
   return (
     <div className="container mt-4">

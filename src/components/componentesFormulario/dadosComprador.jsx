@@ -1,21 +1,20 @@
 import React, { useEffect, useState, useContext } from "react";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import axios from 'axios';
 import { UserContext } from "../principal";
+import { DadosFormulario } from '../../App';
 
 const DadosComprador = (props) => {
     const { dadosGerais } = useContext(UserContext);
-    const [unid, setUnid] = useState(props.unidade);
+    const [unid] = useState(props.unidade);
     const [selectedSubUnidade, setSelectedSubUnidade] = useState('');
     const [subUnidades, setSubUnidades] = useState([]);
     const [infoOpcoes, setInfoOpcoes] = useState([]);
-    const [infoComprador, setInfoComprador] = useState();
-    const [nome, setNome] = useState();
-    const [cep, setCep] = useState();
-    const [endereco, setEndereco] = useState();
-    const [cnpj, setCnpj] = useState();
+    const {nomeComprador, setNomeComprador} = useContext(DadosFormulario);
+    const {cepComprador, setCepComprador}= useContext(DadosFormulario);
+    const {enderecoComprador, setEnderecoComprador} = useContext(DadosFormulario);
+    const {cnpj, setCnpj} = useContext(DadosFormulario);
     const [infoAux, setInfoAux] = useState();
-
+   
     useEffect(() => {
         // Verifica se a unidade está selecionada e os dados gerais estão disponíveis
         if (unid && dadosGerais) {
@@ -29,7 +28,6 @@ const DadosComprador = (props) => {
     }, [unid, dadosGerais]);
 
     useEffect(() => {
-        // Construir a lista de opções de informação
         const newInfoOpcoes = [];
         for (let i in subUnidades) {
             let aux = subUnidades[i];
@@ -46,9 +44,9 @@ const DadosComprador = (props) => {
         let index = e.target.value;
         const selectedText = e.target.options[e.target.selectedIndex].text;
         setSelectedSubUnidade(selectedText);
-        setEndereco(infoAux[index].endereco);
-        setNome(infoAux[index].nomeFantasia);
-        setCep(infoAux[index].cep);
+        setEnderecoComprador(infoAux[index].endereco);
+        setNomeComprador(infoAux[index].nomeFantasia);
+        setCepComprador(infoAux[index].cep);
         setCnpj(infoAux[index].cnpj);
     };
 
@@ -81,18 +79,18 @@ const DadosComprador = (props) => {
                         <div className="col-12 d-flex justify-content-around">
                             <div className="col-4">
                                 <div className="form-group">
-                                    <label htmlFor="nome">Nome: {nome}</label>
+                                    <label htmlFor="nome">Nome: {nomeComprador}</label>
                                 </div>
                             </div>
 
                             <div className="col-2">
                                 <div className="form-group">
-                                    <label htmlFor="cep">CEP: {cep}</label>
+                                    <label htmlFor="cep">CEP: {cepComprador}</label>
                                 </div>
                             </div>
                             <div className="col-6">
                                 <div className="form-group">
-                                    <label htmlFor="endereco">Endereço: {endereco}</label>
+                                    <label htmlFor="endereco">Endereço: {enderecoComprador}</label>
                                 </div>
                             </div>
                         </div>
