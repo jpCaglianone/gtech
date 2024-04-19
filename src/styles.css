@@ -8,8 +8,7 @@ header{
 }
 
 .logo{
-    width: 25%;
-    height: 150px;
+    height: 175px;
 }
 
 li > a {
@@ -81,6 +80,8 @@ main{
     }
   }
 
-  figure{
+  /* figure{
     background-image: url("/public/assets/logoProvisoria.jpeg");
-  }
+    background-repeat: no-repeat;
+    
+  } */

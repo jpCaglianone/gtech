@@ -30,8 +30,8 @@ const Unidade = (props) => {
         <>
 
             <main>
-                <div className="container col-8 mx-auto text-center">
-                    <h2>Antes de continuar, escolha a unidade: </h2>
+                <div className="container mx-auto text-center">
+                    <h2 >Antes de continuar, escolha a unidade: </h2>
                     <div className='col-12 col-md-6 mx-auto text-center select-unidade'> {/* Alteração na classe aqui */}
                         <div className="input-group">
                             <select className="form-select" aria-label="Default select example" onChange={seletorUnidade}>
