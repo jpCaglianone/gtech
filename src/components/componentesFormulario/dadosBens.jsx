@@ -10,6 +10,9 @@ const DadosBens = () => {
     setValorTotal,
     pesoTotal, setPesoTotal } = useContext(DadosFormulario);
   const { dadosBens, setDadosBens } = useContext(DadosFormulario);
+  //region hotfix
+  const [quantidadeAux, setQuantidadeAux] = useState([0,0,0,0,0,0,0,0]);
+  //endregion
 
   function somarQuantidade(e, index) {
     try {
@@ -32,6 +35,12 @@ const DadosBens = () => {
     // Verificar se a descrição contém a palavra "par" e multiplicar a quantidade por 2
     if (e.target.value.toLowerCase().includes('par')) {
       newDadosBens[index].quantidade *= 2;
+      let aux = quantidadeAux;
+
+      //region hotfix
+      aux[index] *= 2;
+      setQuantidadeAux(aux);
+      //endregion
     }
     
     setDadosBens(newDadosBens);
@@ -77,7 +86,7 @@ const DadosBens = () => {
           {dadosBens.map((item, index) => (
             <div className="row" key={index}>
               <div className="col-9 d-flex">
-                <label>{index}. </label>
+                <label>{index + 1}. </label>
                 <input
                   type="text"
                   className="form-control"
@@ -100,7 +109,8 @@ const DadosBens = () => {
                 <input
                   type="number"
                   className="col-4 form-control"
-                  value={item.quantidade}
+{/*                   value={item.quantidade} */}
+                  value={quantidadeAux}
                   onChange={(event) => somarQuantidade(event, index)}
                 />
               </div>
