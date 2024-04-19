@@ -28,6 +28,12 @@ const DadosBens = () => {
   function quantificarDescricaoBens(e, index) {
     const newDadosBens = [...dadosBens];
     newDadosBens[index].descricao = e.target.value;
+    
+    // Verificar se a descrição contém a palavra "par" e multiplicar a quantidade por 2
+    if (e.target.value.toLowerCase().includes('par')) {
+      newDadosBens[index].quantidade *= 2;
+    }
+    
     setDadosBens(newDadosBens);
   }
 
@@ -53,7 +59,6 @@ const DadosBens = () => {
     }
   };
   
-
 
   return (
     <>
