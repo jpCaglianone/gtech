@@ -52,6 +52,7 @@ const DadosVendedor = () => {
     }
   };
 
+  
   return (
     <fieldset className="border p-4">
       <legend className="mb-4">Dados do Vendedor</legend>

@@ -31,15 +31,24 @@ const DadosBens = () => {
     setDadosBens(newDadosBens);
   }
 
-  function handleValor(e) {
-    setValorTotal(e.target.value)
-  }
-
   function handlePeso(e) {
     setPesoTotal(e.target.value)
   }
 
-  console.log(dadosBens)
+  const [valor, setValor] = useState(0);
+
+  const [centavos, setCentavos] = useState('');
+
+  const handleCentavos = (event) => {
+    const inputValue = event.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+    setCentavos(inputValue);
+  };
+
+  const formatCurrency = (value) => {
+    const valorEmReais = parseFloat(value) / 100; // Convertendo centavos para reais
+    return valorEmReais.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  };
+
 
   return (
     <>
@@ -47,7 +56,7 @@ const DadosBens = () => {
         <legend className="mb-4">Descrição dos bens</legend>
         <div className="container">
           <div className="row">
-            <div className="col-10">
+            <div className="col-9">
               <strong>Descrição dos bens</strong>
             </div>
             <div className="col-2">
@@ -57,7 +66,7 @@ const DadosBens = () => {
 
           {dadosBens.map((item, index) => (
             <div className="row" key={index}>
-              <div className="col-10 d-flex">
+              <div className="col-9 d-flex">
                 <label>{index}. </label>
                 <input
                   type="text"
@@ -67,6 +76,7 @@ const DadosBens = () => {
                 />
                 <select
                   id={`combo-${index}`}
+                  className="col-4"
                   onChange={(event) => quantificarDescricaoBens(event, index)}
                   value={item.descricao}
                 >
@@ -76,10 +86,10 @@ const DadosBens = () => {
                   ))}
                 </select>
               </div>
-              <div className="col">
+              <div className="col-3">
                 <input
                   type="number"
-                  className="col-2 form-control"
+                  className="col-4 form-control"
                   value={item.quantidade}
                   onChange={(event) => somarQuantidade(event, index)}
                 />
@@ -93,9 +103,10 @@ const DadosBens = () => {
             </div>
 
             <div className="col">
-              <label>Valor Total: {valorTotal}</label>
-              <input type="number" className="form-control" onChange={handleValor} />
+              <label>Valor Total: </label>
+              <input type="text" className="form-control" value={formatCurrency(centavos)} onChange={handleCentavos} />
             </div>
+
           </div>
           <div className="col d-flex">
             <label>Quantidade Total: {quantidadeTotal} </label>

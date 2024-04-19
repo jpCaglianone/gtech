@@ -80,3 +80,7 @@ main{
         border: 2px solid red;
     }
   }
+
+  figure{
+    background-image: url("/public/assets/logoProvisoria.jpeg");
+  }

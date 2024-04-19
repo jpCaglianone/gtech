@@ -9,7 +9,7 @@ const Header = () => {
             <header>
                 <div className='container bg-black'>
                     <figure className='d-flex justify-content-center'>
-                        <img className='logo' src='/assets/logo_GTech.png' alt="GTech Logo" />
+                        <img className='logo' src='/assets/logoProvisoria.jpeg' alt="GTech Logo" />
                     </figure>
                 </div>
             </header>

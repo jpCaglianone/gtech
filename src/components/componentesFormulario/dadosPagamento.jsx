@@ -105,7 +105,7 @@ const DadosPagamento = () => {
             </label>
 
             <div className="col-12 mb-3 d-flex">
-             
+
               <input
                 type="text"
                 className="form-control"
@@ -138,23 +138,40 @@ const DadosPagamento = () => {
                     value={pagamentoPix.bancoPix || ""}
                   />
                 </div>
-                </div>
+              </div>
 
-                <div className="col-6">
-                  <label htmlFor="agenciaPix" className="form-label">
-                    Agencia:
-                  </label>
-                  <div className="col-11 mb-3 d-flex">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="agenciaPix"
-                      onChange={(e) => handleInputChange(e, "agenciaPix", "pix")}
-                      value={pagamentoPix.agenciaPix || ""}
-                    />
-                  </div>
+              <div className="col-6">
+                <label htmlFor="agenciaPix" className="form-label">
+                  Agencia:
+                </label>
+                <div className="col-11 mb-3 d-flex">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="agenciaPix"
+                    onChange={(e) => handleInputChange(e, "agenciaPix", "pix")}
+                    value={pagamentoPix.agenciaPix || ""}
+                  />
                 </div>
-               </div>
+              </div>
+
+              <div className="col-6">
+                <label htmlFor="contaPix" className="form-label">
+                  Conta:
+                </label>
+                <div className="col-11 mb-3 d-flex">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="contaPix"
+                    onChange={(e) => handleInputChange(e, "contaPix", "pix")}
+                    value={pagamentoPix.contaPix || ""}
+                  />
+                </div>
+              </div>
+
+
+            </div>
 
           </fieldset>
         )}

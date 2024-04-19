@@ -36,6 +36,9 @@ const ContractComponent = () => {
       window.print();
     }, 3000);
   }
+
+  ativarPrint()
+
   const [dia] = useState(new Date().getDate());
   const [mes] = useState(new Date().getMonth() + 1);
   const [ano] = useState(new Date().getFullYear());
@@ -50,9 +53,9 @@ const ContractComponent = () => {
     <div>
       <div className="c19 doc-content page-break" >
         <p className="c16 c11">
-          <img alt="" src="/assets/image2.png" style={{ width: '170px', height: '69px', marginRight: '15px' }} />
+          <img alt="" src="/assets/image2.png" style={{ width: '150px', height: '60px', marginRight:'10px' }} />
           <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
-          <img alt="" src="/assets/image1.png" style={{ width: '170px', height: '69px', marginLeft: '15px' }} />
+          <img alt="" src="/assets/image1.png" style={{ width: '150px', height: '60px',  marginLeft:'10px'}} />
         </p>
 
         <p className="c16 c11">
@@ -219,7 +222,7 @@ const ContractComponent = () => {
 
           </tbody>
         </table>
-        <div className='br'>
+        <div >
           <p className="c16 c11">
             <span className="c0">CLÁUSULA DE RESPONSABILIDADE LEGAL</span>
           </p>
