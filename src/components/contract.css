@@ -410,7 +410,8 @@ table th {
     padding-top: 0pt;
     padding-bottom: 0pt;
     line-height: 1.0;
-    text-align: center
+    text-align: center;
+    margin-left: -50pt;
 }
 
 .c27 {
@@ -459,8 +460,7 @@ table th {
 .c19 {
     background-color: #ffffff;
     max-width: 574.1pt;
-    padding: 14.2pt 7pt 7.1pt 14.2pt
-}
+    padding: 5pt;}
 
 .c11 {
     orphans: 2;
@@ -655,3 +655,17 @@ h6 {
 .br{
     margin-bottom: 11px;
 }
+
+@media print {
+    /* Remove qualquer conteúdo do cabeçalho */
+    @page {
+      margin-top: 0;
+      margin-bottom: 50px; /* Ajuste conforme necessário */
+    }
+  
+    /* Opcionalmente, você pode remover o rodapé também */
+    @page {
+      margin-bottom: 0;
+    }
+  }
+  
