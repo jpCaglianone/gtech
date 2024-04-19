@@ -46,8 +46,13 @@ const DadosBens = () => {
 
   const formatCurrency = (value) => {
     const valorEmReais = parseFloat(value) / 100; // Convertendo centavos para reais
-    return valorEmReais.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    if (!isNaN(valorEmReais)) {
+      return valorEmReais.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    } else {
+      return "R$ 0,00";
+    }
   };
+  
 
 
   return (
