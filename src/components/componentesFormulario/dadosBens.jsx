@@ -109,7 +109,7 @@ const DadosBens = () => {
                 <input
                   type="number"
                   className="col-4 form-control"
-{/*                   value={item.quantidade} */}
+                          //value={item.quantidade}
                   value={quantidadeAux}
                   onChange={(event) => somarQuantidade(event, index)}
                 />
