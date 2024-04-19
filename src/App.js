@@ -35,7 +35,7 @@ function App() {
   const [valorTotal, setValorTotal] = useState();
   const [pesoTotal, setPesoTotal] = useState(0);
   const[unidadeSelecionada, setUnidadeSelecionada] = useState();
-  const [dadosBens, setDadosBens] = useState(Array.from({ length: 9 }, () => ({ descricao: "", quantidade: "" })));
+  const [dadosBens, setDadosBens] = useState(Array.from({ length: 8 }, () => ({ descricao: "", quantidade: "" })));
 
 
   return (
