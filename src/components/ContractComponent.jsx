@@ -50,9 +50,9 @@ const ContractComponent = () => {
     <div>
       <div className="c19 doc-content page-break" >
         <p className="c16 c11">
-          <img alt="" src="/assets/image2.png" style={{ width: '170px', height: '69px', marginRight: '12,5px' }} />
+          <img alt="" src="/assets/image2.png" style={{ width: '170px', height: '69px', marginRight: '15px' }} />
           <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
-          <img alt="" src="/assets/image1.png" style={{ width: '170px', height: '69px', marginLeft: '12,5px' }} />
+          <img alt="" src="/assets/image1.png" style={{ width: '170px', height: '69px', marginLeft: '15px' }} />
         </p>
 
         <p className="c16 c11">
