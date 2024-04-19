@@ -10,9 +10,7 @@ const DadosBens = () => {
     setValorTotal,
     pesoTotal, setPesoTotal } = useContext(DadosFormulario);
   const { dadosBens, setDadosBens } = useContext(DadosFormulario);
-  //region hotfix
-  const [quantidadeAux, setQuantidadeAux] = useState([0,0,0,0,0,0,0,0]);
-  //endregion
+ 
 
   function somarQuantidade(e, index) {
     try {
@@ -26,22 +24,25 @@ const DadosBens = () => {
     } catch {
       alert("No campo de quantidade, apenas números são aceitos");
     }
+
+    const newDadosBens = [...dadosBens];
+    // Verificar se a descrição contém a palavra "par" e multiplicar a quantidade por 2
+    if (newDadosBens[index].descricao.toLowerCase().includes('par')) {
+      newDadosBens[index].quantidade *= 2;
+    }
+    
+    setDadosBens(newDadosBens);
   }
 
   function quantificarDescricaoBens(e, index) {
     const newDadosBens = [...dadosBens];
     newDadosBens[index].descricao = e.target.value;
     
-    // Verificar se a descrição contém a palavra "par" e multiplicar a quantidade por 2
-    if (e.target.value.toLowerCase().includes('par')) {
-      newDadosBens[index].quantidade *= 2;
-      let aux = quantidadeAux;
+    // // Verificar se a descrição contém a palavra "par" e multiplicar a quantidade por 2
+    // if (e.target.value.toLowerCase().includes('par')) {
+    //   newDadosBens[index].quantidade *= 2;
 
-      //region hotfix
-      aux[index] *= 2;
-      setQuantidadeAux(aux);
-      //endregion
-    }
+    // }
     
     setDadosBens(newDadosBens);
   }
@@ -49,8 +50,6 @@ const DadosBens = () => {
   function handlePeso(e) {
     setPesoTotal(e.target.value)
   }
-
-  const [valor, setValor] = useState(0);
 
   const [centavos, setCentavos] = useState('');
 
@@ -107,10 +106,10 @@ const DadosBens = () => {
               </div>
               <div className="col-3">
                 <input
+                  id = "quantidadeBens"
                   type="number"
                   className="col-4 form-control"
-                          //value={item.quantidade}
-                  value={quantidadeAux}
+                  value={item.quantidade}
                   onChange={(event) => somarQuantidade(event, index)}
                 />
               </div>
