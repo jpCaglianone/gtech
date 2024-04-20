@@ -667,14 +667,16 @@ h6 {
 @media print {
     /* Remove qualquer conteúdo do cabeçalho */
     @page {
-      margin-top: 0;
+      margin-top: -10px;
       margin: 0px;
       overflow: hidden; 
     }
   
     #conteudo {
         page-break-inside: avoid; 
-        page-break-after: avoid;           
+        page-break-after: avoid; 
+        height: 95%;          
+        margin-top : -2px;
     }
   }
   #conteudo{
