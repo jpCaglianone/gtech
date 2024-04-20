@@ -115,7 +115,7 @@ const DadosBens = () => {
 
           </div>
           <div className="col d-flex">
-            <label>Quantidade Total: {quantidadeTotal} </label>
+            <label>Quantidade Total: {quantidadeTotal} gr </label>
           </div>
         </div>
       </fieldset>

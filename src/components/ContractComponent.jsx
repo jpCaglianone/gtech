@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './contract.css';
 import { DadosFormulario } from '../App';
+import html2pdf from 'html2pdf.js';
 
 const ContractComponent = () => {
  
@@ -29,9 +30,19 @@ const ContractComponent = () => {
     pesoTotal
   } = useContext(DadosFormulario);
 
-  // Função para ativar a impressão
+  const [dia] = useState(new Date().getDate());
+  const [mes] = useState(new Date().getMonth() + 1);
+  const [ano] = useState(new Date().getFullYear());
+  const [hora] = useState(new Date().getHours());
+  const [minuto] = useState(new Date().getMinutes());
+  const [segundo] = useState(new Date().getSeconds());
+
+  const conteudo = document.getElementById('conteudo');
+console.log(conteudo)
   function ativarPrint() {
+    
    
+    html2pdf().from(conteudo).save(`orcGTech_${nomeVendedor} - ${nomeComprador} - ${dia}${mes}${ano}${hora}${minuto}${segundo}.pdf`);
     setTimeout(function () {
       window.print();
     }, 3000);
@@ -39,9 +50,7 @@ const ContractComponent = () => {
 
   ativarPrint()
 
-  const [dia] = useState(new Date().getDate());
-  const [mes] = useState(new Date().getMonth() + 1);
-  const [ano] = useState(new Date().getFullYear());
+ 
 
   const meses = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril',
@@ -50,12 +59,12 @@ const ContractComponent = () => {
   ];
 
   const conteudoParaImprimir = ( 
-    <div>
+    <div id='conteudo'>
       <div className="c19 doc-content page-break" >
-        <p className="c16 c11">
-          <img alt="" src="/assets/image2.png" style={{ width: '150px', height: '60px', marginRight:'7.5px' }} />
+        <p className="c16a c11">
+          <img alt="" src="/assets/image2.png" style={{ width: '125px', height: '50px', marginRight:'6px' }} />
           <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
-          <img alt="" src="/assets/image1.png" style={{ width: '150px', height: '60px',  marginLeft:'7.5px'}} />
+          <img alt="" src="/assets/image1.png" style={{ width: '125px', height: '50px',  marginLeft:'6px'}} />
         </p>
 
         <p className="c16 c11">
@@ -239,15 +248,15 @@ const ContractComponent = () => {
           <span className="c0">DISPOSIÇÕES FINAIS</span>
         </p>
 
-        <p className="c13 c11">
-          <span className="c0">
+        <p className="c13 c11 br">
+          <span className="c0 ">
             Este contrato representa o acordo completo entre as partes. E foi redigido em consonância ao disposto no Artigo 5º da Lei Ordinária 7005 de maio de 2015.
             Qualquer alteração a este contrato deve ser feita por escrito e assinada por ambas as partes.
             O VENDEDOR declara ter recebido a importância negociada neste contrato, por parte do COMPRADOR e, portanto, transfere neste ato a propriedade dos bens ao COMPRADOR, dando QUITAÇÃO AO CONTRATO em conformidade com os Artigos 481 e 1267 do Código de Processo Civil.
             Por estarem, assim, cientes e de pleno acordo com os termos deste contrato, as partes assinam, firmando um compromisso de confiança e respeito mútuo.
           </span>
         </p>
-        <p className="c16 c11"><span className="c3">RIO DE JANEIRO {dia} de {meses[mes]} de {ano}</span></p>
+        <p className="c16 c11 "><span className="c3">RIO DE JANEIRO {dia} de {meses[mes]} de {ano}</span></p>
         <p className="c16 c11"><span className="c3">___________________________________________________</span></p>
         <p className="c16 c11"><span className="c43">ASSINATURA DO VENDEDOR</span></p>
       </div>

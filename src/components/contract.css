@@ -411,7 +411,15 @@ table th {
     padding-bottom: 0pt;
     line-height: 1.0;
     text-align: center;
-    margin-left: -50pt;
+    margin-left: 2pt;
+}
+
+.c16a {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.0;
+    text-align: center;
+    margin-left: -30pt;
 }
 
 .c27 {
@@ -660,12 +668,15 @@ h6 {
     /* Remove qualquer conteúdo do cabeçalho */
     @page {
       margin-top: 0;
-      margin-bottom: 50px; /* Ajuste conforme necessário */
+      margin: 0px;
+      overflow: hidden; 
     }
   
-    /* Opcionalmente, você pode remover o rodapé também */
-    @page {
-      margin-bottom: 0;
+    #conteudo {
+        page-break-inside: avoid; 
+        page-break-after: avoid;           
     }
   }
-  
+  #conteudo{
+    margin-left: 20px;
+  }
