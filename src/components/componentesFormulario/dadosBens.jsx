@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { DadosFormulario } from '../../App';
 
 const DadosBens = () => {
@@ -6,44 +6,31 @@ const DadosBens = () => {
   const { quantidadeTotal,
     setQuantidadeTotal,
     itens,
-    valorTotal,
-    setValorTotal,
     pesoTotal, setPesoTotal } = useContext(DadosFormulario);
   const { dadosBens, setDadosBens } = useContext(DadosFormulario);
  
-
   function somarQuantidade(e, index) {
+
+
     try {
       let valorAux = Number(e.target.value);
       const newDadosBens = [...dadosBens];
       newDadosBens[index].quantidade = valorAux;
       setDadosBens(newDadosBens);
-
+      if (newDadosBens[index].descricao.toLowerCase().includes('par')) {
+        newDadosBens[index].quantidade *= 2;
+      }
       let total = newDadosBens.reduce((acc, item) => acc + (item.quantidade || 0), 0);
       setQuantidadeTotal(total);
     } catch {
       alert("No campo de quantidade, apenas números são aceitos");
     }
-
-    const newDadosBens = [...dadosBens];
-    // Verificar se a descrição contém a palavra "par" e multiplicar a quantidade por 2
-    if (newDadosBens[index].descricao.toLowerCase().includes('par')) {
-      newDadosBens[index].quantidade *= 2;
-    }
     
-    setDadosBens(newDadosBens);
   }
 
   function quantificarDescricaoBens(e, index) {
     const newDadosBens = [...dadosBens];
     newDadosBens[index].descricao = e.target.value;
-    
-    // // Verificar se a descrição contém a palavra "par" e multiplicar a quantidade por 2
-    // if (e.target.value.toLowerCase().includes('par')) {
-    //   newDadosBens[index].quantidade *= 2;
-
-    // }
-    
     setDadosBens(newDadosBens);
   }
 
