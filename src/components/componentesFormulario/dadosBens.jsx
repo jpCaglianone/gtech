@@ -104,7 +104,7 @@ const DadosBens = () => {
           ))}
           <div className="row flex-wrap d-flex">
             <div className="col">
-              <label>Peso Total: {pesoTotal} </label>
+              <label>Peso Total: {pesoTotal} gr </label>
               <input type="number" className="form-control" onChange={handlePeso} />
             </div>
 
@@ -115,7 +115,7 @@ const DadosBens = () => {
 
           </div>
           <div className="col d-flex">
-            <label>Quantidade Total: {quantidadeTotal} gr </label>
+            <label>Quantidade Total: {quantidadeTotal} </label>
           </div>
         </div>
       </fieldset>
