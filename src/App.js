@@ -36,7 +36,7 @@ function App() {
   const [pesoTotal, setPesoTotal] = useState(0);
   const[unidadeSelecionada, setUnidadeSelecionada] = useState();
   const [dadosBens, setDadosBens] = useState(Array.from({ length: 8 }, () => ({ descricao: "", quantidade: "" })));
-
+  const [valorPorExtenso, setValorPorExtenso] = useState();
 
   return (
     <DadosFormulario.Provider value={{
@@ -92,7 +92,8 @@ function App() {
       setValorTotal,
       unidadeSelecionada, 
       setUnidadeSelecionada,
-      pesoTotal, setPesoTotal
+      pesoTotal, setPesoTotal,
+      setValorPorExtenso, valorPorExtenso
     }}>
       <Router>
         <Routes>

@@ -17,7 +17,6 @@ const DadosComprador = (props) => {
 
     useEffect(() => {
         if (unidadeSelecionada && dadosGerais) {
-            console.log(dadosGerais)
             for (let i in dadosGerais) {
                 if (Object.keys(dadosGerais[i]).toString().toLowerCase() === unidadeSelecionada.toLowerCase()) {
                     setSubUnidades(dadosGerais[i]);

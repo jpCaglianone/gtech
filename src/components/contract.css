@@ -670,15 +670,18 @@ h6 {
       margin-top: -10px;
       margin: 0px;
       overflow: hidden; 
+      page-break-inside: avoid; 
+      page-break-after: avoid; 
     }
   
     #conteudo {
         page-break-inside: avoid; 
         page-break-after: avoid; 
         height: 95%;          
-        margin-top : -2px;
+        margin-top : -4px;
+        width: 100%;
     }
   }
   #conteudo{
-    margin-left: 20px;
+    margin-left: 12px;
   }

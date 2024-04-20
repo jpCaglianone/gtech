@@ -2,16 +2,25 @@ import React, { useState, useContext } from "react";
 import { DadosFormulario } from '../../App';
 
 const DadosBens = () => {
-
-  const { quantidadeTotal,
+  const {
+    quantidadeTotal,
     setQuantidadeTotal,
     itens,
-    pesoTotal, setPesoTotal } = useContext(DadosFormulario);
+    valorPorExtenso,
+    setValorPorExtenso,
+    pesoTotal,
+    setPesoTotal,
+    valorTotal,
+    setValorTotal
+  } = useContext(DadosFormulario);
+
   const { dadosBens, setDadosBens } = useContext(DadosFormulario);
- 
+
+  const [centavos, setCentavos] = useState('');
+
+
+
   function somarQuantidade(e, index) {
-
-
     try {
       let valorAux = Number(e.target.value);
       const newDadosBens = [...dadosBens];
@@ -25,7 +34,6 @@ const DadosBens = () => {
     } catch {
       alert("No campo de quantidade, apenas números são aceitos");
     }
-    
   }
 
   function quantificarDescricaoBens(e, index) {
@@ -38,8 +46,6 @@ const DadosBens = () => {
     setPesoTotal(e.target.value)
   }
 
-  const [centavos, setCentavos] = useState('');
-
   const handleCentavos = (event) => {
     const inputValue = event.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
     setCentavos(inputValue);
@@ -48,12 +54,16 @@ const DadosBens = () => {
   const formatCurrency = (value) => {
     const valorEmReais = parseFloat(value) / 100; // Convertendo centavos para reais
     if (!isNaN(valorEmReais)) {
-      return valorEmReais.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      let valor = valorEmReais.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+      setValorTotal(valor);
+      
+      return valor;
     } else {
       return "R$ 0,00";
     }
   };
-  
+
+
 
   return (
     <>
@@ -93,7 +103,7 @@ const DadosBens = () => {
               </div>
               <div className="col-3">
                 <input
-                  id = "quantidadeBens"
+                  id="quantidadeBens"
                   type="number"
                   className="col-4 form-control"
                   value={item.quantidade}

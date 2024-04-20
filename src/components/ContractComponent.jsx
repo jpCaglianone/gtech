@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './contract.css';
 import { DadosFormulario } from '../App';
+// eslint-disable-next-line
 import html2pdf from 'html2pdf.js';
+import numeroPorExtenso from '../js/valorPorExtenso'
 
 const ContractComponent = () => {
  
@@ -22,6 +24,8 @@ const ContractComponent = () => {
     complemento,
     numero,
     telefone,
+    valorPorExtenso,
+    setValorPorExtenso,
     email,
     dadosBens,
     pagamentoBancario,
@@ -37,8 +41,23 @@ const ContractComponent = () => {
   const [minuto] = useState(new Date().getMinutes());
   const [segundo] = useState(new Date().getSeconds());
 
+  console.log(valorTotal)
+
+  
+  function stringComVirgulaParaNumero(str) {
+    
+    str = str.replace('R$', '').trim();
+   
+    return parseFloat(str.replace(',', '.'));
+  }
+  
+  let numExtenso = stringComVirgulaParaNumero(valorTotal);
+  console.log(numExtenso)
+  numExtenso = numeroPorExtenso(numExtenso);
+  setValorPorExtenso(numExtenso);
+
+
   const conteudo = document.getElementById('conteudo');
-console.log(conteudo)
   function ativarPrint() {
     
    
@@ -178,7 +197,7 @@ console.log(conteudo)
                 <p className="c5"><span className="c20">O valor total é de: </span></p>
               </td>
               <td className="c38">
-                <p className="c5"><span className="c3">R$ {valorTotal}</span></p>
+                <p className="c5"><span className="c3">{valorTotal} - {valorPorExtenso}</span></p>
               </td>
             </tr>
           </tbody>
@@ -263,7 +282,6 @@ console.log(conteudo)
 
     </div>
   );
-
   return conteudoParaImprimir;
 };
 

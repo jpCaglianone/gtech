@@ -12,7 +12,6 @@ const DadosPagamento = () => {
     cpf, telefone
   } = useContext(DadosFormulario);
 
-  console.log(pagamentoBancario)
 
   const handleInputChange = (e, field, type) => {
     const value = e.target.value;
