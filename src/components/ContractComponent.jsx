@@ -44,23 +44,20 @@ const ContractComponent = () => {
   console.log(valorTotal)
 
   
-  function stringComVirgulaParaNumero(str) {
-    
-    str = str.replace('R$', '').trim();
-   
-    return parseFloat(str.replace(',', '.'));
-  }
-  
+function stringComVirgulaParaNumero(str) {
+  str = str.replace('R$', '').trim();
+  str = str.replace(/\./g, '');
+  str = str.replace(',', '.');
+  return parseFloat(str);
+}
+ 
   let numExtenso = stringComVirgulaParaNumero(valorTotal);
   console.log(numExtenso)
   numExtenso = numeroPorExtenso(numExtenso);
   setValorPorExtenso(numExtenso);
 
-
   const conteudo = document.getElementById('conteudo');
   function ativarPrint() {
-    
-   
     html2pdf().from(conteudo).save(`orcGTech_${nomeVendedor} - ${nomeComprador} - ${dia}${mes}${ano}${hora}${minuto}${segundo}.pdf`);
     setTimeout(function () {
       window.print();
@@ -68,9 +65,7 @@ const ContractComponent = () => {
   }
 
   ativarPrint()
-
  
-
   const meses = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril',
     'Maio', 'Junho', 'Julho', 'Agosto',
