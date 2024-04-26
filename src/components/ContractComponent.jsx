@@ -246,9 +246,12 @@ function stringComVirgulaParaNumero(str) {
           </tbody>
         </table>
         <div >
+          
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <p className="c16 c11">
             <span className="c0">CLÁUSULA DE RESPONSABILIDADE LEGAL</span>
           </p>
+          
           <p className="c13 c11">
             <span className="c0">
               O VENDEDOR declara e garante que as joias vendidas neste contrato não são produto de qualquer ato ilícito, incluindo roubo, furto, fraude ou atividades ilegais.
@@ -257,11 +260,13 @@ function stringComVirgulaParaNumero(str) {
             </span>
           </p>
         </div>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
         <p className="c16 c11">
           <span className="c0">DISPOSIÇÕES FINAIS</span>
         </p>
-
+        
         <p className="c13 c11 br">
           <span className="c0 ">
             Este contrato representa o acordo completo entre as partes. E foi redigido em consonância ao disposto no Artigo 5º da Lei Ordinária 7005 de maio de 2015.
@@ -270,6 +275,7 @@ function stringComVirgulaParaNumero(str) {
             Por estarem, assim, cientes e de pleno acordo com os termos deste contrato, as partes assinam, firmando um compromisso de confiança e respeito mútuo.
           </span>
         </p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <p className="c16 c11 "><span className="c3">RIO DE JANEIRO {dia} de {meses[mes]} de {ano}</span></p>
         <p className="c16 c11"><span className="c3">___________________________________________________</span></p>
         <p className="c16 c11"><span className="c43">ASSINATURA DO VENDEDOR</span></p>

@@ -6,8 +6,6 @@ const DadosBens = () => {
     quantidadeTotal,
     setQuantidadeTotal,
     itens,
-    valorPorExtenso,
-    setValorPorExtenso,
     pesoTotal,
     setPesoTotal,
     valorTotal,
