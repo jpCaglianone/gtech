@@ -73,7 +73,7 @@ function stringComVirgulaParaNumero(str) {
   ];
 
   const conteudoParaImprimir = ( 
-    <div id='conteudo'>
+    <div id='conteudo'>&nbsp;
       <div className="c19 doc-content page-break" >
         <p className="c16a c11">
           <img alt="" src="/assets/image2.png" style={{ width: '125px', height: '50px', marginRight:'6px' }} />
@@ -152,6 +152,7 @@ function stringComVirgulaParaNumero(str) {
             </tr>
           </tbody>
         </table>
+        &nbsp;
         <p className="c11 c41">
           <span className="c0">OBJETO DO CONTRATO</span>
         </p>
@@ -182,6 +183,7 @@ function stringComVirgulaParaNumero(str) {
 
           </tbody>
         </table>
+        &nbsp;
         <p className="c41 c11">
           <span className="c0">VALOR E FORMA DE PAGAMENTO</span>
         </p>
@@ -200,6 +202,7 @@ function stringComVirgulaParaNumero(str) {
         <p className="c5 c11">
           <span className="c3">O VENDEDOR concorda em receber o valor acima descrito, que será pago pelo COMPRADOR da seguinte forma:</span>
         </p>
+        
         <p className="c5 c11">
           <span className="c3">Dinheiro <strong>{dinChecked ? " X " : " "}</strong>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -214,7 +217,7 @@ function stringComVirgulaParaNumero(str) {
             Transferência Bancária
             <strong>{transfChecked ? " X " : " "} </strong></span>
         </p>
-
+        &nbsp;
         <tbody>
           <tr className="c34">
 
@@ -251,7 +254,7 @@ function stringComVirgulaParaNumero(str) {
           <p className="c16 c11">
             <span className="c0">CLÁUSULA DE RESPONSABILIDADE LEGAL</span>
           </p>
-          
+            
           <p className="c13 c11">
             <span className="c0">
               O VENDEDOR declara e garante que as joias vendidas neste contrato não são produto de qualquer ato ilícito, incluindo roubo, furto, fraude ou atividades ilegais.
