@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState} from 'react';
 import './contract.css';
 import { DadosFormulario } from '../App';
 // eslint-disable-next-line
@@ -73,14 +73,15 @@ function stringComVirgulaParaNumero(str) {
   ];
 
   const conteudoParaImprimir = ( 
-    <div id='conteudo'>&nbsp;
+    
+    <div id='conteudo'>
+       <br />
       <div className="c19 doc-content page-break" >
         <p className="c16a c11">
           <img alt="" src="/assets/image2.png" style={{ width: '125px', height: '50px', marginRight:'6px' }} />
           <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
           <img alt="" src="/assets/image1.png" style={{ width: '125px', height: '50px',  marginLeft:'6px'}} />
         </p>
-
         <p className="c16 c11">
           <span className="c0">PARTES CONTRATANTES</span>
         </p>
@@ -95,6 +96,7 @@ function stringComVirgulaParaNumero(str) {
         <p className="c5 c11 br">
           <span className="c3">Endereço: {enderecoComprador} | {cepComprador} </span> <span className="c3"></span>
         </p>
+        <div className='br'> </div><div className='br'> </div>
         <p className="c5 c11 ">
           <span className="c8">VENDEDOR:</span>
         </p>
@@ -152,7 +154,7 @@ function stringComVirgulaParaNumero(str) {
             </tr>
           </tbody>
         </table>
-        &nbsp;
+        <br />
         <p className="c11 c41">
           <span className="c0">OBJETO DO CONTRATO</span>
         </p>
@@ -183,7 +185,9 @@ function stringComVirgulaParaNumero(str) {
 
           </tbody>
         </table>
-        &nbsp;
+        <div className='br'> </div>
+        <div className='br'> </div>
+        <div className='br'> </div>
         <p className="c41 c11">
           <span className="c0">VALOR E FORMA DE PAGAMENTO</span>
         </p>
@@ -199,6 +203,7 @@ function stringComVirgulaParaNumero(str) {
             </tr>
           </tbody>
         </table>
+        <div className='br'> </div><div className='br'> </div>
         <p className="c5 c11">
           <span className="c3">O VENDEDOR concorda em receber o valor acima descrito, que será pago pelo COMPRADOR da seguinte forma:</span>
         </p>
@@ -217,7 +222,7 @@ function stringComVirgulaParaNumero(str) {
             Transferência Bancária
             <strong>{transfChecked ? " X " : " "} </strong></span>
         </p>
-        &nbsp;
+        <div className='br'> </div><div className='br'> </div>
         <tbody>
           <tr className="c34">
 
@@ -250,7 +255,7 @@ function stringComVirgulaParaNumero(str) {
         </table>
         <div >
           
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <br />
           <p className="c16 c11">
             <span className="c0">CLÁUSULA DE RESPONSABILIDADE LEGAL</span>
           </p>
@@ -264,7 +269,7 @@ function stringComVirgulaParaNumero(str) {
           </p>
         </div>
         
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div className='br'> </div><div className='br'> </div><div className='br'> </div>
 
         <p className="c16 c11">
           <span className="c0">DISPOSIÇÕES FINAIS</span>
@@ -278,8 +283,9 @@ function stringComVirgulaParaNumero(str) {
             Por estarem, assim, cientes e de pleno acordo com os termos deste contrato, as partes assinam, firmando um compromisso de confiança e respeito mútuo.
           </span>
         </p>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
         <p className="c16 c11 "><span className="c3">RIO DE JANEIRO {dia} de {meses[mes]} de {ano}</span></p>
+        <br />
         <p className="c16 c11"><span className="c3">___________________________________________________</span></p>
         <p className="c16 c11"><span className="c43">ASSINATURA DO VENDEDOR</span></p>
       </div>
