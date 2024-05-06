@@ -35,7 +35,7 @@ const ContractComponent = () => {
   } = useContext(DadosFormulario);
 
   const [dia] = useState(new Date().getDate());
-  const [mes] = useState(new Date().getMonth() + 1);
+  const [mes] = useState(new Date().getMonth());
   const [ano] = useState(new Date().getFullYear());
   const [hora] = useState(new Date().getHours());
   const [minuto] = useState(new Date().getMinutes());
