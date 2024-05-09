@@ -8,7 +8,6 @@ export const UserContext = React.createContext();
 
 const Principal = () => {
     const [data, setData] = useState(null);
-    // const [unidade, setUnidade] = useState();
     const {dadosGerais, setDadosGerais} = useContext(DadosFormulario);
     const {itens, setItens} = useContext(DadosFormulario);
     

@@ -1,4 +1,4 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import './contract.css';
 import { DadosFormulario } from '../App';
 // eslint-disable-next-line
@@ -31,7 +31,7 @@ const ContractComponent = () => {
     pagamentoBancario,
     pagamentoPix,
     valorTotal,
-    pesoTotal
+    pesoTotal, imagem
   } = useContext(DadosFormulario);
 
   const [dia] = useState(new Date().getDate());
@@ -41,9 +41,28 @@ const ContractComponent = () => {
   const [minuto] = useState(new Date().getMinutes());
   const [segundo] = useState(new Date().getSeconds());
 
-  console.log(valorTotal)
+  const [urlImagem, setUrlImagem] = useState();
 
-  
+    let urlImg
+
+    if (imagem === "Second Hand"){
+      urlImg = "/assets/image_REV.png"
+    }
+    else if (imagem === "24k"){
+      urlImg = "/assets/image_24K.png"
+    }
+    else if (imagem === "GTI"){
+      urlImg = "/assets/image_GTI.png"
+    }
+    else if (imagem === "GTT"){
+      urlImg = ("/assets/image_GTT.png")
+    }
+    
+    else if (imagem === "Scrap"){
+      urlImg = ("/assets/image2.png")
+    }
+    setUrlImagem(urlImg)
+    
 function stringComVirgulaParaNumero(str) {
   str = str.replace('R$', '').trim();
   str = str.replace(/\./g, '');
@@ -78,7 +97,7 @@ function stringComVirgulaParaNumero(str) {
        <br />
       <div className="c19 doc-content page-break" >
         <p className="c16a c11">
-          <img alt="" src="/assets/image2.png" style={{ width: '125px', height: '50px', marginRight:'6px' }} />
+          <img alt="" src={urlImagem} style={{ width: '125px', height: '50px', marginRight:'6px' }} />
           <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
           <img alt="" src="/assets/image1.png" style={{ width: '125px', height: '50px',  marginLeft:'6px'}} />
         </p>

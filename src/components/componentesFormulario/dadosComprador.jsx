@@ -14,6 +14,8 @@ const DadosComprador = (props) => {
     const { enderecoComprador, setEnderecoComprador } = useContext(DadosFormulario);
     const { cnpj, setCnpj } = useContext(DadosFormulario);
     const [infoAux, setInfoAux] = useState();
+    
+    const {imagem,setImagem} = useContext(DadosFormulario)
 
     useEffect(() => {
         if (unidadeSelecionada && dadosGerais) {
@@ -47,8 +49,9 @@ const DadosComprador = (props) => {
         setNomeComprador(infoAux[index].nomeFantasia);
         setCepComprador(infoAux[index].cep);
         setCnpj(infoAux[index].cnpj);
+        setImagem(infoAux[index].extensao);
+        
     };
-
     return (
         <>
         <fieldset className="border p-4 my-3">
