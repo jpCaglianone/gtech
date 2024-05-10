@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from 'react';
+import React, { useContext, useState} from 'react';
 import './contract.css';
 import { DadosFormulario } from '../App';
 // eslint-disable-next-line
@@ -41,28 +41,8 @@ const ContractComponent = () => {
   const [minuto] = useState(new Date().getMinutes());
   const [segundo] = useState(new Date().getSeconds());
 
-  const [urlImagem, setUrlImagem] = useState();
-
-    let urlImg
-
-    if (imagem === "Second Hand"){
-      urlImg = "/assets/image_REV.png"
-    }
-    else if (imagem === "24k"){
-      urlImg = "/assets/image_24K.png"
-    }
-    else if (imagem === "GTI"){
-      urlImg = "/assets/image_GTI.png"
-    }
-    else if (imagem === "GTT"){
-      urlImg = ("/assets/image_GTT.png")
-    }
-    
-    else if (imagem === "Scrap"){
-      urlImg = ("/assets/image2.png")
-    }
-    setUrlImagem(urlImg)
-    
+  console.log(imagem)
+  
 function stringComVirgulaParaNumero(str) {
   str = str.replace('R$', '').trim();
   str = str.replace(/\./g, '');
@@ -71,7 +51,6 @@ function stringComVirgulaParaNumero(str) {
 }
  
   let numExtenso = stringComVirgulaParaNumero(valorTotal);
-  console.log(numExtenso)
   numExtenso = numeroPorExtenso(numExtenso);
   setValorPorExtenso(numExtenso);
 
@@ -84,7 +63,7 @@ function stringComVirgulaParaNumero(str) {
   }
 
   ativarPrint()
- 
+
   const meses = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril',
     'Maio', 'Junho', 'Julho', 'Agosto',
@@ -96,10 +75,10 @@ function stringComVirgulaParaNumero(str) {
     <div id='conteudo'>
        <br />
       <div className="c19 doc-content page-break" >
-        <p className="c16a c11">
-          <img alt="" src={urlImagem} style={{ width: '125px', height: '50px', marginRight:'6px' }} />
+        <p className="c16a c11" style={{ margin:'0 auto'}}>
+          <img alt="" src={imagem} style={{ width: '185px', height: '50px', marginRight:'6px'}} />
           <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
-          <img alt="" src="/assets/image1.png" style={{ width: '125px', height: '50px',  marginLeft:'6px'}} />
+          <img alt="" src="/assets/image1.png" style={{ width: '185px', height: '50px',  marginLeft:'6px'}} />
         </p>
         <p className="c16 c11">
           <span className="c0">PARTES CONTRATANTES</span>
