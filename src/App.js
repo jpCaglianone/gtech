@@ -8,6 +8,8 @@ import Formulario from './components/formulario'
 
 export const DadosFormulario = createContext();
 
+const QTD_BENS = 16;
+
 function App() {
   const [quantidadeTotal, setQuantidadeTotal] = useState(0);
   const [selectedSubUnidade, setSelectedSubUnidade] = useState('');
@@ -35,7 +37,7 @@ function App() {
   const [valorTotal, setValorTotal] = useState();
   const [pesoTotal, setPesoTotal] = useState(0);
   const[unidadeSelecionada, setUnidadeSelecionada] = useState();
-  const [dadosBens, setDadosBens] = useState(Array.from({ length: 8 }, () => ({ descricao: "", quantidade: "" })));
+  const [dadosBens, setDadosBens] = useState(Array.from({ length: QTD_BENS }, () => ({ descricao: "", quantidade: "" })));
   const [valorPorExtenso, setValorPorExtenso] = useState();
   const [imagem, setImagem] = useState();
 

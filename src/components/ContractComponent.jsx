@@ -1,4 +1,4 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import './contract.css';
 import { DadosFormulario } from '../App';
 // eslint-disable-next-line
@@ -6,7 +6,7 @@ import html2pdf from 'html2pdf.js';
 import numeroPorExtenso from '../js/valorPorExtenso'
 
 const ContractComponent = () => {
- 
+
   const {
     quantidadeTotal,
     nomeComprador,
@@ -42,14 +42,14 @@ const ContractComponent = () => {
   const [segundo] = useState(new Date().getSeconds());
 
   console.log(imagem)
-  
-function stringComVirgulaParaNumero(str) {
-  str = str.replace('R$', '').trim();
-  str = str.replace(/\./g, '');
-  str = str.replace(',', '.');
-  return parseFloat(str);
-}
- 
+
+  function stringComVirgulaParaNumero(str) {
+    str = str.replace('R$', '').trim();
+    str = str.replace(/\./g, '');
+    str = str.replace(',', '.');
+    return parseFloat(str);
+  }
+
   let numExtenso = stringComVirgulaParaNumero(valorTotal);
   numExtenso = numeroPorExtenso(numExtenso);
   setValorPorExtenso(numExtenso);
@@ -70,15 +70,15 @@ function stringComVirgulaParaNumero(str) {
     'Setembro', 'Outubro', 'Novembro', 'Dezembro'
   ];
 
-  const conteudoParaImprimir = ( 
-    
+  const conteudoParaImprimir = (
+
     <div id='conteudo'>
-       <br />
+      <br />
       <div className="c19 doc-content page-break" >
-        <p className="c16a c11" style={{ margin:'0 auto'}}>
-          <img alt="" src={imagem} style={{ width: '185px', height: '50px', marginRight:'6px'}} />
+        <p className="c16a c11" style={{ margin: '0 auto' }}>
+          <img alt="" src={imagem} style={{ width: '185px', height: '50px', marginRight: '6px' }} />
           <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
-          <img alt="" src="/assets/image1.png" style={{ width: '185px', height: '50px',  marginLeft:'6px'}} />
+          <img alt="" src="/assets/image1.png" style={{ width: '185px', height: '50px', marginLeft: '6px' }} />
         </p>
         <p className="c16 c11">
           <span className="c0">PARTES CONTRATANTES</span>
@@ -170,16 +170,41 @@ function stringComVirgulaParaNumero(str) {
         </p>
         <table className="c25">
           <tbody>
-            {dadosBens.map((item, index) => (
-              <tr className="c36" key={index}>
-                <td className="c22">
-                  <p className="c16"><span className="c3">Descrição dos bens</span></p>
-                </td>
-                <td className="c18">
-                  <p className="c5"><span className="c33">{item.descricao}</span></p>
-                </td>
-              </tr>
-            ))}
+            <div className='container'>
+              <div className='row'>
+                <div className='col-6'>
+                  {dadosBens.slice(0, Math.ceil(dadosBens.length / 2)).map((item, index) => (
+                    <tr className="c36" key={index}>
+                      <td className="c22">
+                        <p className="c16"><span className="c3">Item {index + 1}.</span></p>
+                      </td>
+                      <td className="c18">
+                        <p className="c5"><span className="c33">{item.descricao}</span></p>
+                      </td>
+                      <td className="c22">
+                        <p className="c5"><span className="c33">{item.quantidade}</span></p>
+                      </td>
+                    </tr>
+                  ))}
+                </div>
+                <div className='col-6'>
+                  {dadosBens.slice(Math.ceil(dadosBens.length / 2)).map((item, index) => (
+                    <tr className="c36" key={index + Math.ceil(dadosBens.length / 2)}>
+                      <td className="c22">
+                        <p className="c16"><span className="c3">Item {index + Math.ceil(dadosBens.length / 2) + 1}.</span></p>
+                      </td>
+                      <td className="c18">
+                        <p className="c5"><span className="c33">{item.descricao}</span></p>
+                      </td>
+                      <td className="c22">
+                        <p className="c5"><span className="c33">{item.quantidade}</span></p>
+                      </td>
+                    </tr>
+                  ))}
+                </div>
+              </div>
+            </div>
+
 
           </tbody>
         </table>
@@ -205,7 +230,7 @@ function stringComVirgulaParaNumero(str) {
         <p className="c5 c11">
           <span className="c3">O VENDEDOR concorda em receber o valor acima descrito, que será pago pelo COMPRADOR da seguinte forma:</span>
         </p>
-        
+
         <p className="c5 c11">
           <span className="c3">Dinheiro <strong>{dinChecked ? " X " : " "}</strong>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -252,12 +277,12 @@ function stringComVirgulaParaNumero(str) {
           </tbody>
         </table>
         <div >
-          
-         <br />
+
+          <br />
           <p className="c16 c11">
             <span className="c0">CLÁUSULA DE RESPONSABILIDADE LEGAL</span>
           </p>
-            
+
           <p className="c13 c11">
             <span className="c0">
               O VENDEDOR declara e garante que as joias vendidas neste contrato não são produto de qualquer ato ilícito, incluindo roubo, furto, fraude ou atividades ilegais.
@@ -266,13 +291,13 @@ function stringComVirgulaParaNumero(str) {
             </span>
           </p>
         </div>
-        
+
         <div className='br'> </div><div className='br'> </div><div className='br'> </div>
 
         <p className="c16 c11">
           <span className="c0">DISPOSIÇÕES FINAIS</span>
         </p>
-        
+
         <p className="c13 c11 br">
           <span className="c0 ">
             Este contrato representa o acordo completo entre as partes. E foi redigido em consonância ao disposto no Artigo 5º da Lei Ordinária 7005 de maio de 2015.

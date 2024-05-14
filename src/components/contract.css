@@ -455,13 +455,13 @@ table th {
     margin-left: -5pt;
     border-spacing: 0;
     border-collapse: collapse;
-    margin-right: auto
+    margin-right: auto;
 }
 
 .c31 {
     padding-top: 0pt;
     padding-bottom: 0pt;
-    line-height: 1.1500000000000001;
+    line-height: 1.15;
     text-align: left
 }
 
@@ -653,7 +653,7 @@ h6 {
     font-size: 10pt;
     padding-bottom: 2pt;
     font-family: "Arial";
-    line-height: 1.1500000000000001;
+    line-height: 1.15;
     page-break-after: avoid;
     orphans: 2;
     widows: 2;
@@ -665,7 +665,6 @@ h6 {
 }
 
 @media print {
-    /* Remove qualquer conteúdo do cabeçalho */
     @page {
       margin-top: -10px;
       margin: 0px;
