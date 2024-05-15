@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import InputMask from 'react-input-mask'; // Importando a biblioteca de máscara
 import { DadosFormulario } from '../../App';
 
 const DadosPagamento = () => {
@@ -9,9 +10,10 @@ const DadosPagamento = () => {
     pagamentoBancario, setPagamentoBancario,
     pagamentoPix, setPagamentoPix,
     dinChecked, setDinChecked,
-    cpf, telefone
+    cpf, telefone, email
   } = useContext(DadosFormulario);
 
+  const [isTelefone, setIsTelefone] = useState(false); // Estado para rastrear se "Telefone" foi selecionado
 
   const handleInputChange = (e, field, type) => {
     const value = e.target.value;
@@ -30,8 +32,9 @@ const DadosPagamento = () => {
 
   function pixChange(e, field) {
     let evento = e.target.value;
-    let value = evento === "CPF" ? cpf : evento === "Telefone" ? telefone : "";
-    if (evento === "CPF" || evento === "Telefone") {
+    let value = evento === "CPF" ? cpf : evento === "Telefone" ? telefone : evento === "Email" ? email : "";
+    setIsTelefone(evento === "Telefone"); // Atualiza o estado se a opção "Telefone" for selecionada
+    if (evento === "CPF" || evento === "Telefone" || evento === "Email") {
       setPagamentoPix(prevState => ({
         ...prevState,
         [field]: value
@@ -105,13 +108,24 @@ const DadosPagamento = () => {
 
             <div className="col-12 mb-3 d-flex">
 
-              <input
-                type="text"
-                className="form-control"
-                id="chavePix"
-                onChange={(e) => handleInputChange(e, "chavePix", "pix")}
-                value={pagamentoPix.chavePix || ""}
-              />
+              {isTelefone ? (
+                <InputMask
+                  mask="(99) 99999-9999"
+                  value={pagamentoPix.chavePix || ""}
+                  onChange={(e) => handleInputChange(e, "chavePix", "pix")}
+                >
+                  {(inputProps) => <input {...inputProps} type="text" className="form-control" id="chavePix" />}
+                </InputMask>
+              ) : (
+                <input
+                  type="text"
+                  className="form-control"
+                  id="chavePix"
+                  onChange={(e) => handleInputChange(e, "chavePix", "pix")}
+                  value={pagamentoPix.chavePix || ""}
+                />
+              )}
+              
               <select className="form-select form-unidadesInfo"
                 onChange={(e) => pixChange(e, "chavePix")}
                 aria-label="Default select example"
@@ -119,6 +133,7 @@ const DadosPagamento = () => {
                 <option value="" disabled selected>-- SELECIONE --</option>
                 <option value="CPF">CPF</option>
                 <option value="Telefone">Telefone</option>
+                <option value="Email">Email</option>
               </select>
             </div>
 
@@ -168,7 +183,6 @@ const DadosPagamento = () => {
                   />
                 </div>
               </div>
-
 
             </div>
 
