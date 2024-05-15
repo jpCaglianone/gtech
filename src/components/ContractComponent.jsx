@@ -166,7 +166,7 @@ const ContractComponent = () => {
             Quantidade de Bens: {quantidadeTotal}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Peso total: {pesoTotal}</span>
+            Peso total: {pesoTotal} gr</span>
         </p>
         <table className="c25">
           <tbody>
