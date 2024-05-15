@@ -181,6 +181,9 @@ const ContractComponent = () => {
                       <td className="c18">
                         <p className="c5"><span className="c33">{item.descricao}</span></p>
                       </td>
+                      <td className="c22a">
+                        <p className="c5"><span className="c33">Qtd.</span></p>
+                      </td>
                       <td className="c22">
                         <p className="c5"><span className="c33">{item.quantidade}</span></p>
                       </td>
@@ -195,6 +198,9 @@ const ContractComponent = () => {
                       </td>
                       <td className="c18">
                         <p className="c5"><span className="c33">{item.descricao}</span></p>
+                      </td>
+                      <td className="c22a">
+                        <p className="c5"><span className="c33">Qtd.</span></p>
                       </td>
                       <td className="c22">
                         <p className="c5"><span className="c33">{item.quantidade}</span></p>
