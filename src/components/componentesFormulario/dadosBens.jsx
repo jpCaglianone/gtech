@@ -16,21 +16,26 @@ const DadosBens = () => {
 
   const [centavos, setCentavos] = useState('');
 
-
-
   function somarQuantidade(e, index) {
     try {
       let valorAux = Number(e.target.value);
       const newDadosBens = [...dadosBens];
       newDadosBens[index].quantidade = valorAux;
       setDadosBens(newDadosBens);
-      if (newDadosBens[index].descricao.toLowerCase().includes('par')) {
-        newDadosBens[index].quantidade *= 2;
-      }
       let total = newDadosBens.reduce((acc, item) => acc + (item.quantidade || 0), 0);
       setQuantidadeTotal(total);
     } catch {
       alert("No campo de quantidade, apenas números são aceitos");
+    }
+  }
+
+  function dobrarQuantidadeSeNecessario(index) {
+    const newDadosBens = [...dadosBens];
+    if (newDadosBens[index].descricao.toLowerCase().includes('par')) {
+      newDadosBens[index].quantidade *= 2;
+      setDadosBens(newDadosBens);
+      let total = newDadosBens.reduce((acc, item) => acc + (item.quantidade || 0), 0);
+      setQuantidadeTotal(total);
     }
   }
 
@@ -41,7 +46,7 @@ const DadosBens = () => {
   }
 
   function handlePeso(e) {
-    setPesoTotal(e.target.value)
+    setPesoTotal(e.target.value);
   }
 
   const handleCentavos = (event) => {
@@ -52,16 +57,13 @@ const DadosBens = () => {
   const formatCurrency = (value) => {
     const valorEmReais = parseFloat(value) / 100; // Convertendo centavos para reais
     if (!isNaN(valorEmReais)) {
-      let valor = valorEmReais.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+      let valor = valorEmReais.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
       setValorTotal(valor);
-      
       return valor;
     } else {
       return "R$ 0,00";
     }
   };
-
-
 
   return (
     <>
@@ -106,6 +108,7 @@ const DadosBens = () => {
                   className="col-4 form-control"
                   value={item.quantidade}
                   onChange={(event) => somarQuantidade(event, index)}
+                  onBlur={() => dobrarQuantidadeSeNecessario(index)}
                 />
               </div>
             </div>
@@ -120,7 +123,6 @@ const DadosBens = () => {
               <label>Valor Total: </label>
               <input type="text" className="form-control" value={formatCurrency(centavos)} onChange={handleCentavos} />
             </div>
-
           </div>
           <div className="col d-flex">
             <label>Quantidade Total: {quantidadeTotal} </label>
