@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './contract.css';
 import { DadosFormulario } from '../App';
 // eslint-disable-next-line
@@ -40,6 +40,8 @@ const ContractComponent = () => {
   const [hora] = useState(new Date().getHours());
   const [minuto] = useState(new Date().getMinutes());
   const [segundo] = useState(new Date().getSeconds());
+  const [cpfFormatado, setCpfFormatado] = useState();
+  const [cepFormatado, setCepFormatado] = useState();
 
   console.log(imagem)
 
@@ -62,13 +64,43 @@ const ContractComponent = () => {
     }, 3000);
   }
 
-  ativarPrint()
-
+  
   const meses = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril',
     'Maio', 'Junho', 'Julho', 'Agosto',
     'Setembro', 'Outubro', 'Novembro', 'Dezembro'
   ];
+
+
+  function formatarCPF(cpf) {
+    cpf = cpf.replace(/\D/g, '');
+
+    cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+
+    return cpf;
+}
+
+function formatarCPF(cpf) {
+  cpf = cpf.replace(/\D/g, '');
+
+  cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+
+  return cpf;
+}
+
+
+function formatarCEP(cep) {
+  cep = cep.replace(/\D/g, '');
+  cep = cep.replace(/^(\d{2})(\d{3})(\d{3})/, '$1.$2-$3');
+
+  return cep;
+}
+
+  useEffect(()=>{
+    setCpfFormatado(formatarCPF(cpf));
+    setCepFormatado(formatarCEP(cepVendedor));
+  },[])
+  ativarPrint()
 
   const conteudoParaImprimir = (
 
@@ -113,7 +145,7 @@ const ContractComponent = () => {
                 <p className="c5"><span className="c3">CPF</span></p>
               </td>
               <td className="c17">
-                <p className="c5"><span className="c3">{cpf}</span></p>
+                <p className="c5"><span className="c3">{cpfFormatado}</span></p>
               </td>
               <td className="c24">
                 <p className="c5"><span className="c3">E-mail:</span></p>
@@ -133,7 +165,7 @@ const ContractComponent = () => {
                 <p className="c5"><span className="c3">CEP</span></p>
               </td>
               <td className="c2" colSpan="2">
-                <p className="c5"><span className="c3">{cepVendedor}</span></p>
+                <p className="c5"><span className="c3">{cepFormatado}</span></p>
               </td>
             </tr>
             <tr className="c14">
