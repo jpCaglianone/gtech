@@ -59,7 +59,7 @@ function numeroPorExtenso(numero) {
         );
       else
        var cemNome
-       if (num%100 == 0 ){
+       if (num%100 == 0 && num/100 == 1){
         cemNome = 0
        }
        else{
