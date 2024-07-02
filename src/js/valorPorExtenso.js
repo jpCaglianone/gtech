@@ -36,7 +36,7 @@ function numeroPorExtenso(numero) {
       "noventa",
     ];
     var centenas = [
-      "",
+      "cem",
       "cento",
       "duzentos",
       "trezentos",
@@ -58,8 +58,15 @@ function numeroPorExtenso(numero) {
           (num % 10 !== 0 ? " e " + unidades[num % 10] : "")
         );
       else
+       var cemNome
+       if (num%100 == 0 ){
+        cemNome = 0
+       }
+       else{
+          cemNome = Math.floor(num / 100)
+       }
         return (
-          centenas[Math.floor(num / 100)] +
+          centenas[cemNome] +
           (num % 100 !== 0 ? " e " + porExtenso(num % 100) : "")
         );
     }
