@@ -59,16 +59,18 @@ function numeroPorExtenso(numero) {
         );
       else
        var cemNome
-       if (num%100 == 0 && num/100 == 1){
+       if (num%100 === 0 && num/100 === 1){
         cemNome = 0
        }
        else{
           cemNome = Math.floor(num / 100)
        }
+ 
         return (
-          centenas[cemNome] +
+          "e " + centenas[cemNome] +
           (num % 100 !== 0 ? " e " + porExtenso(num % 100) : "")
         );
+
     }
 
     var reais = Math.floor(numero);
