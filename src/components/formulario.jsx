@@ -30,7 +30,10 @@ const Formulario = (props) => {
                     <DadosPagamento />
                 </section>
                 <section className="btnImprimir d-flex justify-content-center">
-                    <Link to="/resultado" className="btn btn-success mt-6 col-6">Exibir documento</Link>
+                    <Link to="/resultado" className="btn btn-success mt-6 col-6">Exibir documento - Jóias</Link>
+                </section>
+                <section className="btnImprimirBolsa d-flex justify-content-center">
+                    <Link to="/resultado" className="btn btn-success mt-6 col-6">Exibir documento - Bolsas</Link>
                 </section>
             </div>
             <Footer />
