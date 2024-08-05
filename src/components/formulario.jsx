@@ -38,14 +38,10 @@ const Formulario = (props) => {
                     <DadosPagamento />
                 </section>
                 <section className="btnImprimir d-flex justify-content-center">
-                    <Link
-                        to={validarTodosCampos ? "#" : "/resultado"}
-                        className={`btn btn-success mt-6 col-6 ${validarTodosCampos(nomeVendedor,cpf,dataNascimento,cep,enderecoVendedor,telefone, valorTotal, pesoTotal) ? "disabled" : ""}`}
-                        aria-disabled={validarTodosCampos(nomeVendedor,cpf,dataNascimento,cep,enderecoVendedor,telefone, valorTotal, pesoTotal) ? "true" : "false"}
-                        onClick={(e) => validarTodosCampos(nomeVendedor,cpf,dataNascimento,cep,enderecoVendedor,telefone, valorTotal, pesoTotal) && e.preventDefault()}
-                    >
-                        Exibir documento
-                    </Link>
+                    <Link to="/resultado" className="btn btn-success mt-6 col-6">Exibir documento - Jóias</Link>
+                </section>
+                <section className="btnImprimirBolsa d-flex justify-content-center">
+                    <Link to="/resultado" className="btn btn-success mt-6 col-6">Exibir documento - Bolsas</Link>
                 </section>
 
             </div>
