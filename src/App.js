@@ -11,6 +11,7 @@ export const DadosFormulario = createContext();
 const QTD_BENS = 16;
 
 function App() {
+  const [camposPreenchidos, setCamposPreenchidos] = useState(false);
   const [quantidadeTotal, setQuantidadeTotal] = useState(0);
   const [selectedSubUnidade, setSelectedSubUnidade] = useState('');
   const [nomeComprador, setNomeComprador] = useState();
@@ -43,6 +44,8 @@ function App() {
 
   return (
     <DadosFormulario.Provider value={{
+      camposPreenchidos,
+      setCamposPreenchidos,
       quantidadeTotal,
       setQuantidadeTotal,
       selectedSubUnidade,

@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import InputMask from "react-input-mask";
 import validaCpf from "../../js/validadorCpf";
 import { DadosFormulario } from '../../App';
+import { validaCampoIndependente } from '../../js/validadacaoEntradas';
+
 
 const DadosVendedor = () => {
   const {
@@ -15,6 +17,21 @@ const DadosVendedor = () => {
     numero, setNumero, telefone, setTelefone,
     email, setEmail
   } = useContext(DadosFormulario);
+
+  const [campoVazio, setCampoVazio] = useState({
+    nome : true,
+    cpf: true
+  });
+
+  
+  function validarCampoVazio(e, nomeCampo) {
+    let obj = nomeCampo;
+    setCampoVazio((anterior) => {
+      const novoEstado = { ...anterior, [obj]: validaCampoIndependente(e) };
+      console.log(novoEstado);
+      return novoEstado;
+    });
+  }
 
   const handleCpfChange = (event) => {
     const novoCpf = event.target.value.replace(/\D/g, "");
@@ -66,7 +83,9 @@ const DadosVendedor = () => {
             className="form-control"
             value={nomeVendedor}
             onChange={(e) => setNomeVendedor(e.target.value)}
+            onBlur={(e) => validarCampoVazio(e.target.value, "nome")}            
           />
+          {campoVazio.nome ? null : <p className="text-danger"> <strong >Campo Obrigatório</strong></p>}
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="email" className="form-label">Email:</label>
@@ -75,8 +94,11 @@ const DadosVendedor = () => {
             id="Email"
             className="form-control"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+            onChange={(e) => setEmail(e.target.value)} 
+            onBlur={(e) => validarCampoVazio(e.target.value, "email")}            
+            />
+            {campoVazio.email ? null : <p className="text-danger"> <strong >Campo Obrigatório</strong></p>}
+          
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="cpf" className="form-label">CPF:</label>
@@ -84,9 +106,12 @@ const DadosVendedor = () => {
             mask="999.999.999-99"
             inputMode="numeric"
             value={cpf}
-            onChange={handleCpfChange}
             className="form-control"
+            onChange={handleCpfChange}      
+            onBlur={(e) => validarCampoVazio(e.target.value, "cpf")}            
           />
+          {campoVazio.cpf ? null : <p className="text-danger"> <strong >Campo Obrigatório</strong></p>}
+        
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="dataNascimento" className="form-label">Data de Nascimento:</label>
@@ -95,8 +120,12 @@ const DadosVendedor = () => {
             inputMode="numeric"
             value={dataNascimento}
             onChange={(e) => setDataNascimento(e.target.value)}
+            
             className="form-control"
-          />
+            onBlur={(e) => validarCampoVazio(e.target.value, "cpf")}            
+            />
+            {campoVazio.cpf ? null : <p className="text-danger"> <strong >Campo Obrigatório</strong></p>}
+          
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="cep" className="form-label">CEP:</label>
@@ -104,9 +133,10 @@ const DadosVendedor = () => {
             mask="99999-999"
             inputMode="numeric"
             value={cepVendedor}
-            onChange={handleCepChange}
+            onChange={handleCepChange}      
             className="form-control"
           />
+          
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="endereco" className="form-label">Endereço:</label>
@@ -115,8 +145,10 @@ const DadosVendedor = () => {
             id="endereco"
             className="form-control"
             value={enderecoVendedor}
+                  
             readOnly
           />
+           
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="complemento" className="form-label">Complemento:</label>
@@ -126,6 +158,7 @@ const DadosVendedor = () => {
             className="form-control"
             value={complemento}
             onChange={(e) => setComplemento(e.target.value)}
+            
           />
         </div>
         <div className="col-md-6 mb-3">
@@ -145,8 +178,10 @@ const DadosVendedor = () => {
             inputMode="numeric"
             value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
+            
             className="form-control"
           />
+           
         </div>
       </div>
     </div>
