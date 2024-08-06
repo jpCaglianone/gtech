@@ -11,7 +11,7 @@ const Principal = () => {
     const {dadosGerais, setDadosGerais} = useContext(DadosFormulario);
     const {itens, setItens} = useContext(DadosFormulario);
     
-
+/* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
         const fetchData = async () => {
             try {
