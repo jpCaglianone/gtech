@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../styles.css';
 import { Link } from 'react-router-dom';
@@ -6,22 +6,39 @@ import { DadosFormulario } from '../App';
 
 const Unidade = (props) => {
     const [habilitarBotao, setHabilitarBotao] = useState(true);
-    const { setUnidadeSelecionada } = useContext(DadosFormulario)
+    const { setUnidadeSelecionada,setTipoDocumento } = useContext(DadosFormulario);
+    const [optUnidade, setOptUnidade] = useState (false);
+    const [optProduto, setOptProduto] = useState (false);
+    
+    useEffect (() => {
+        setHabilitarBotao(!(optProduto && optUnidade));
+    
+    },[optProduto,optUnidade])    
+
 
     function seletorUnidade(event) {
         const unid = event.target.value.toLowerCase();
         if (["ipanema", "meier", "tijuca"].includes(unid) ) {
-            
-            setHabilitarBotao(false);
+            setOptUnidade(true);
             setUnidadeSelecionada(unid);
+            
         } else {
-            setHabilitarBotao(true);
+            setOptUnidade(false);
             setUnidadeSelecionada(null);
+            
         }
+        // habilitar()
     }
 
-    function seletorTipoDoc () {
-
+    function seletorTipoDoc (event) {
+        const prod = event.target.value.toLowerCase();
+        if (["bolsas", "joias"].includes(prod) ) {
+            setOptProduto(true);
+            setTipoDocumento(prod); 
+        } else {
+            setOptProduto(false);
+            setTipoDocumento(null);
+        }
     }
     
 
@@ -50,7 +67,7 @@ const Unidade = (props) => {
                         </div>
                         <div className='row my-3'></div>
                         <div className="input-group text-center">
-                            <h2>Tipo do orçamento: </h2> 
+                            <h2>Produto : </h2> 
                             <div className='col-1'></div>
                             <select className="form-select" aria-label="Default select example" onChange={seletorTipoDoc}>
                                 <option value="" selected>-- SELECIONE --</option>

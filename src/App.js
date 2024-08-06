@@ -23,7 +23,7 @@ function App() {
   const [transfChecked, setTransfChecked] = useState(false);
   const [dinChecked, setDinChecked] = useState(false);
   const [pagamentoBancario, setPagamentoBancario] = useState([]);
-  const [ pagamentoPix, setPagamentoPix] = useState([]);
+  const [pagamentoPix, setPagamentoPix] = useState([]);
   const [nomeVendedor, setNomeVendedor] = useState("");
   const [cpf, setCpf] = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
@@ -37,10 +37,11 @@ function App() {
   const [dadosGerais, setDadosGerais] = useState([]);
   const [valorTotal, setValorTotal] = useState();
   const [pesoTotal, setPesoTotal] = useState(0);
-  const[unidadeSelecionada, setUnidadeSelecionada] = useState();
+  const [unidadeSelecionada, setUnidadeSelecionada] = useState();
   const [dadosBens, setDadosBens] = useState(Array.from({ length: QTD_BENS }, () => ({ descricao: "", quantidade: "" })));
   const [valorPorExtenso, setValorPorExtenso] = useState();
   const [imagem, setImagem] = useState();
+  const [tipoDocumento, setTipoDocumento] = useState("");
 
   return (
     <DadosFormulario.Provider value={{
@@ -66,9 +67,9 @@ function App() {
       setTransfChecked,
       dinChecked,
       setDinChecked,
-      pagamentoBancario, 
+      pagamentoBancario,
       setPagamentoBancario,
-      pagamentoPix, 
+      pagamentoPix,
       setPagamentoPix,
       nomeVendedor,
       setNomeVendedor,
@@ -86,21 +87,22 @@ function App() {
       setNumero,
       telefone,
       setTelefone,
-      email, 
+      email,
       setEmail,
       dadosBens,
       setDadosBens,
-      dadosGerais, 
+      dadosGerais,
       setDadosGerais,
       itens,
       setItens,
       valorTotal,
       setValorTotal,
-      unidadeSelecionada, 
+      unidadeSelecionada,
       setUnidadeSelecionada,
       pesoTotal, setPesoTotal,
       setValorPorExtenso, valorPorExtenso,
-      imagem, setImagem
+      imagem, setImagem,
+      tipoDocumento, setTipoDocumento
     }}>
       <Router>
         <Routes>
