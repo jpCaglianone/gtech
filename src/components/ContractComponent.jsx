@@ -31,7 +31,7 @@ const ContractComponent = () => {
     pagamentoBancario,
     pagamentoPix,
     valorTotal,
-    pesoTotal, 
+    pesoTotal,
     imagem,
     tipoDocumento
   } = useContext(DadosFormulario);
@@ -46,7 +46,7 @@ const ContractComponent = () => {
   const [cpfFormatado, setCpfFormatado] = useState();
   const [cepFormatado, setCepFormatado] = useState();
 
-//#endregion
+  //#endregion
 
   function stringComVirgulaParaNumero(str) {
     str = str.replace('R$', '').trim();
@@ -60,7 +60,7 @@ const ContractComponent = () => {
   setValorPorExtenso(numExtenso);
 
   const conteudo = document.getElementById('conteudo');
-  
+
 
   const ativarPrint = useCallback(() => {
     html2pdf()
@@ -78,47 +78,53 @@ const ContractComponent = () => {
     'Setembro', 'Outubro', 'Novembro', 'Dezembro'
   ];
 
-function formatarCPF(cpf) {
-  cpf = cpf.replace(/\D/g, '');
+  function formatarCPF(cpf) {
+    cpf = cpf.replace(/\D/g, '');
 
-  cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
 
-  return cpf;
-}
+    return cpf;
+  }
 
-function formatarCEP(cep) {
-  cep = cep.replace(/\D/g, '');
-  cep = cep.replace(/^(\d{2})(\d{3})(\d{3})/, '$1.$2-$3');
+  function formatarCEP(cep) {
+    cep = cep.replace(/\D/g, '');
+    cep = cep.replace(/^(\d{2})(\d{3})(\d{3})/, '$1.$2-$3');
 
-  return cep;
-}
+    return cep;
+  }
 
   const conteudoParaImprimir = (
 
     <div id='conteudo'>
       <br />
       <div className="c19 doc-content page-break" >
-        <p className="c16a c11" style={{ margin: '0 auto' }}>
+        <p className="c16a c11 d-flex" style={{ margin: '0 auto' }}>
           <img alt="" src={imagem} style={{ width: '185px', height: '50px', marginRight: '6px' }} />
-          { tipoDocumento === "joias" ?
+        
+        
+          {tipoDocumento === "joias" ?
 
             <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
-          :
+            :
 
-          tipoDocumento ==="bolsas" ? 
+            tipoDocumento === "bolsas" ?
 
-          <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span> 
+              <span className="c46 col-5">CONTRATO DE AVALIAÇÃO, COMPRA E VENDA
+                DE BOLSAS E ARTIGOS DE LUXO
+              </span>
 
-          :
-          
-           <script>
-            alert("Houve um erro com a configuração do produto!")
-           </script>
+              :
+
+              <script>
+                alert("Houve um erro com a configuração do produto!")
+              </script>
 
           }
+
           <img alt="" src="/assets/image1.png" style={{ width: '185px', height: '50px', marginLeft: '6px' }} />
         </p>
         <p className="c16 c11">
+          <br/>
           <span className="c0">PARTES CONTRATANTES</span>
         </p>
         <p className="c5 c11">
@@ -323,34 +329,73 @@ function formatarCEP(cep) {
         <div >
 
           <br />
-          <p className="c16 c11">
-            <span className="c0">CLÁUSULA DE RESPONSABILIDADE LEGAL</span>
-          </p>
+          {
 
-          <p className="c13 c11">
-            <span className="c0">
-              O VENDEDOR declara e garante que as joias vendidas neste contrato não são produto de qualquer ato ilícito, incluindo roubo, furto, fraude ou atividades ilegais.
-              Garante que as joias são legítimas, de sua propriedade e não estão envolvidas em qualquer disputa legal.
-              O VENDEDOR está ciente que caso oculte ou falte com a verdade a respeito da procedência legal dos bens negociados neste contrato, violará as leis aplicáveis ao comércio de produtos, concorrendo ao crime disposto no Artigo 180 do Código Penal e se compromete a indenizar e isentar de toda e qualquer responsabilidade legal o COMPRADOR no caso de as joias aqui negociadas serem posteriormente determinadas como produto de origem ilícita.
-            </span>
-          </p>
+            tipoDocumento === "joias" ?
+
+              <div id="clausula-contrato">
+                <p className="c16 c11">
+                  <span className="c0">CLÁUSULA DE RESPONSABILIDADE LEGAL</span>
+                </p>
+
+                <p className="c13 c11">
+                  <span className="c0">
+                    O VENDEDOR declara e garante que as joias vendidas neste contrato não são produto de qualquer ato ilícito, incluindo roubo, furto, fraude ou atividades ilegais.
+                    Garante que as joias são legítimas, de sua propriedade e não estão envolvidas em qualquer disputa legal.
+                    O VENDEDOR está ciente que caso oculte ou falte com a verdade a respeito da procedência legal dos bens negociados neste contrato, violará as leis aplicáveis ao comércio de produtos, concorrendo ao crime disposto no Artigo 180 do Código Penal e se compromete a indenizar e isentar de toda e qualquer responsabilidade legal o COMPRADOR no caso de as joias aqui negociadas serem posteriormente determinadas como produto de origem ilícita.
+                  </span>
+                </p>
+
+                <p className="c16 c11">
+                  <span className="c0">DISPOSIÇÕES FINAIS</span>
+                </p>
+
+                <p className="c13 c11 br">
+                  <span className="c0 ">
+                    Este contrato representa o acordo completo entre as partes. E foi redigido em consonância ao disposto no Artigo 5º da Lei Ordinária 7005 de maio de 2015.
+                    Qualquer alteração a este contrato deve ser feita por escrito e assinada por ambas as partes.
+                    O VENDEDOR declara ter recebido a importância negociada neste contrato, por parte do COMPRADOR e, portanto, transfere neste ato a propriedade dos bens ao COMPRADOR, dando QUITAÇÃO AO CONTRATO em conformidade com os Artigos 481 e 1267 do Código de Processo Civil.
+                    Por estarem, assim, cientes e de pleno acordo com os termos deste contrato, as partes assinam, firmando um compromisso de confiança e respeito mútuo.
+                  </span>
+                </p>
+
+
+              </div>
+
+
+              :
+
+              tipoDocumento === "bolsas" ?
+
+                <div id="clausula-contrato">
+
+                  <p className="c13 c11">
+                    <span className="c0">
+                      <strong>CLÁUSULA DE RESPONSABILIDADE LEGAL: </strong>
+                      O VENDEDOR declara ciência de que deixa suas peças para avaliação de autenticidade do COMPRADOR e que somente após laudo positivo receberá a quantia acordada neste documento. Caso o laudo seja negativo, o VENDEDOR compromete-se a arcar com os custos do documento de autenticidade (U$ 45,00 na cotação vigente atualizada) e retirar suas peças sem obrigatoriedade do COMPRADOR em seguir com a negociação e não tendo ônus financeiro para o mesmo.
+                      O VENDEDOR declara e garante que as bolsas e/ou artigos de luxo vendidos neste contrato não são produto de qualquer ato ilícito, incluindo roubo, furto, fraude ou atividades ilegais.
+                      Garante que as bolsas e/ou artigos de luxo são legítimos, de sua propriedade e não estão envolvidos em qualquer disputa legal.
+                      O VENDEDOR está ciente que caso oculte ou falte com a verdade a respeito da procedência legal dos bens negociados neste contrato, violará as leis aplicáveis ao comércio de produtos, concorrendo ao crime disposto no Artigo 180 do Código Penal e se compromete a indenizar e isentar de toda e qualquer responsabilidade legal o COMPRADOR no caso de as bolsas e/ou artigos de luxo aqui negociados serem posteriormente determinados como produto de origem ilícita.
+                      <br />
+                      <strong>DISPOSIÇÕES FINAIS</strong>
+                      Este contrato representa o acordo completo entre as partes. E foi redigido em consonância ao disposto no Artigo 5º da Lei Ordinária 7005 de maio de 2015.
+                      Qualquer alteração a este contrato deve ser feita por escrito e assinada por ambas as partes.
+                      O VENDEDOR declara ter recebido a importância negociada neste contrato, por parte do COMPRADOR e, portanto, transfere neste ato a propriedade dos bens ao COMPRADOR, dando QUITAÇÃO AO CONTRATO em conformidade com os Artigos 481 e 1267 do Código de Processo Civil.
+                      Por estarem, assim, cientes e de pleno acordo com os termos deste contrato, as partes assinam, firmando um compromisso de confiança e respeito mútuo.
+
+                    </span>
+                  </p>
+                </div>
+
+                : "Erro ao redigir a clausula - tipo de documento não selecionado"
+
+          }
+
+
+          <div className='br'> </div><div className='br'> </div>
+
+
         </div>
-
-        <div className='br'> </div><div className='br'> </div><div className='br'> </div>
-
-        <p className="c16 c11">
-          <span className="c0">DISPOSIÇÕES FINAIS</span>
-        </p>
-
-        <p className="c13 c11 br">
-          <span className="c0 ">
-            Este contrato representa o acordo completo entre as partes. E foi redigido em consonância ao disposto no Artigo 5º da Lei Ordinária 7005 de maio de 2015.
-            Qualquer alteração a este contrato deve ser feita por escrito e assinada por ambas as partes.
-            O VENDEDOR declara ter recebido a importância negociada neste contrato, por parte do COMPRADOR e, portanto, transfere neste ato a propriedade dos bens ao COMPRADOR, dando QUITAÇÃO AO CONTRATO em conformidade com os Artigos 481 e 1267 do Código de Processo Civil.
-            Por estarem, assim, cientes e de pleno acordo com os termos deste contrato, as partes assinam, firmando um compromisso de confiança e respeito mútuo.
-          </span>
-        </p>
-        <br />
         <p className="c16 c11 "><span className="c3">RIO DE JANEIRO {dia} de {meses[mes]} de {ano}</span></p>
         <br />
         <p className="c16 c11"><span className="c3">___________________________________________________</span></p>
@@ -360,11 +405,11 @@ function formatarCEP(cep) {
     </div>
   );
 
-useEffect(() => {
-  setCpfFormatado(formatarCPF(cpf));
-  setCepFormatado(formatarCEP(cepVendedor));
-  ativarPrint();
-}, [ativarPrint, cepVendedor, cpf]);
+  useEffect(() => {
+    setCpfFormatado(formatarCPF(cpf));
+    setCepFormatado(formatarCEP(cepVendedor));
+    ativarPrint();
+  }, [ativarPrint, cepVendedor, cpf]);
 
 
   return conteudoParaImprimir;
