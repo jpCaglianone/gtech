@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import DadosBens from "./componentesFormulario/dadosBens";
@@ -8,12 +8,9 @@ import DadosPagamento from "./componentesFormulario/dadosPagamento";
 import Header from "./header";
 import Footer from "./footer";
 
-import { validarTodosCampos } from '../js/validadacaoEntradas';
 
 
 import '../styles.css';
-
-import { DadosFormulario } from '../App';
 
 const Formulario = (props) => {
    
