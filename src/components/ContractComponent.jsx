@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import './contract.css';
 import { DadosFormulario } from '../App';
 // eslint-disable-next-line
@@ -31,9 +31,12 @@ const ContractComponent = () => {
     pagamentoBancario,
     pagamentoPix,
     valorTotal,
-    pesoTotal, imagem
+    pesoTotal, 
+    imagem,
+    tipoDocumento
   } = useContext(DadosFormulario);
 
+  //#region conts
   const [dia] = useState(new Date().getDate());
   const [mes] = useState(new Date().getMonth());
   const [ano] = useState(new Date().getFullYear());
@@ -43,7 +46,7 @@ const ContractComponent = () => {
   const [cpfFormatado, setCpfFormatado] = useState();
   const [cepFormatado, setCepFormatado] = useState();
 
-  console.log(imagem)
+//#endregion
 
   function stringComVirgulaParaNumero(str) {
     str = str.replace('R$', '').trim();
@@ -57,14 +60,18 @@ const ContractComponent = () => {
   setValorPorExtenso(numExtenso);
 
   const conteudo = document.getElementById('conteudo');
-  function ativarPrint() {
-    html2pdf().from(conteudo).save(`orcGTech_${nomeVendedor} - ${nomeComprador} - ${dia}${mes}${ano}${hora}${minuto}${segundo}.pdf`);
-    setTimeout(function () {
+  
+
+  const ativarPrint = useCallback(() => {
+    html2pdf()
+      .from(conteudo)
+      .save(
+        `orcGTech_${nomeVendedor} - ${nomeComprador} - ${dia}${mes}${ano}${hora}${minuto}${segundo}.pdf`
+      );
+    setTimeout(() => {
       window.print();
     }, 3000);
-  }
-
-  
+  }, [conteudo, nomeVendedor, nomeComprador, dia, mes, ano, hora, minuto, segundo]);
   const meses = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril',
     'Maio', 'Junho', 'Julho', 'Agosto',
@@ -79,19 +86,12 @@ function formatarCPF(cpf) {
   return cpf;
 }
 
-
 function formatarCEP(cep) {
   cep = cep.replace(/\D/g, '');
   cep = cep.replace(/^(\d{2})(\d{3})(\d{3})/, '$1.$2-$3');
 
   return cep;
 }
-
-  useEffect(()=>{
-    setCpfFormatado(formatarCPF(cpf));
-    setCepFormatado(formatarCEP(cepVendedor));
-  },[])
-  ativarPrint()
 
   const conteudoParaImprimir = (
 
@@ -100,7 +100,22 @@ function formatarCEP(cep) {
       <div className="c19 doc-content page-break" >
         <p className="c16a c11" style={{ margin: '0 auto' }}>
           <img alt="" src={imagem} style={{ width: '185px', height: '50px', marginRight: '6px' }} />
-          <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
+          { tipoDocumento === "joias" ?
+
+            <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
+          :
+
+          tipoDocumento ==="bolsas" ? 
+
+          <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span> 
+
+          :
+          
+           <script>
+            alert("Houve um erro com a configuração do produto!")
+           </script>
+
+          }
           <img alt="" src="/assets/image1.png" style={{ width: '185px', height: '50px', marginLeft: '6px' }} />
         </p>
         <p className="c16 c11">
@@ -344,7 +359,17 @@ function formatarCEP(cep) {
 
     </div>
   );
+
+useEffect(() => {
+  setCpfFormatado(formatarCPF(cpf));
+  setCepFormatado(formatarCEP(cepVendedor));
+  ativarPrint();
+}, [ativarPrint, cepVendedor, cpf]);
+
+
   return conteudoParaImprimir;
+
+
 };
 
 export default ContractComponent;

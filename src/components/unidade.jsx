@@ -6,7 +6,7 @@ import { DadosFormulario } from '../App';
 
 const Unidade = (props) => {
     const [habilitarBotao, setHabilitarBotao] = useState(true);
-    const { setUnidadeSelecionada,setTipoDocumento } = useContext(DadosFormulario);
+    const { setUnidadeSelecionada, setTipoDocumento } = useContext(DadosFormulario);
     const [optUnidade, setOptUnidade] = useState (false);
     const [optProduto, setOptProduto] = useState (false);
     

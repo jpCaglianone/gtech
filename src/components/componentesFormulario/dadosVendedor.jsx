@@ -20,7 +20,9 @@ const DadosVendedor = () => {
 
   const [campoVazio, setCampoVazio] = useState({
     nome : true,
-    cpf: true
+    cpf: true,
+    email: true,
+    dataNascimento : true
   });
 
   
@@ -122,9 +124,9 @@ const DadosVendedor = () => {
             onChange={(e) => setDataNascimento(e.target.value)}
             
             className="form-control"
-            onBlur={(e) => validarCampoVazio(e.target.value, "cpf")}            
+            onBlur={(e) => validarCampoVazio(e.target.value, "dataNascimento")}            
             />
-            {campoVazio.cpf ? null : <p className="text-danger"> <strong >Campo Obrigatório</strong></p>}
+            {campoVazio.dataNascimento ? null : <p className="text-danger"> <strong >Campo Obrigatório</strong></p>}
           
         </div>
         <div className="col-md-6 mb-3">
@@ -135,7 +137,9 @@ const DadosVendedor = () => {
             value={cepVendedor}
             onChange={handleCepChange}      
             className="form-control"
-          />
+            onBlur={(e) => validarCampoVazio(e.target.value, "cep")}            
+            />
+            {campoVazio.cep ? null : <p className="text-danger"> <strong >Campo Obrigatório</strong></p>}
           
         </div>
         <div className="col-md-6 mb-3">
