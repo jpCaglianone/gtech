@@ -16,8 +16,7 @@ import '../styles.css';
 import { DadosFormulario } from '../App';
 
 const Formulario = (props) => {
-    const {nomeVendedor,cpf,dataNascimento,cep,enderecoVendedor,telefone, valorTotal, pesoTotal} = useContext(DadosFormulario);
-
+   
     return (
         <>
             <Header />
