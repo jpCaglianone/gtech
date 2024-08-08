@@ -18,14 +18,13 @@ const Unidade = (props) => {
 
     function seletorUnidade(event) {
         const unid = event.target.value.toLowerCase();
-        if (["ipanema", "meier", "tijuca"].includes(unid) ) {
+        if (["ipanema", "meier", "tijuca","eternno"].includes(unid) ) {
             setOptUnidade(true);
             setUnidadeSelecionada(unid);
             
         } else {
             setOptUnidade(false);
             setUnidadeSelecionada(null);
-            
         }
         // habilitar()
     }
@@ -55,7 +54,7 @@ const Unidade = (props) => {
 
             <main>
                 <div className="container mx-auto text-center">
-                    <h1>Antes de continuar, escolha a unidade e o tipo do documento solicitado: </h1>
+                    <h2 className='text-center'>Selecione a unidade e o tipo do documento solicitado: </h2>
                     <div className='col-12 col-md-6 mx-auto text-center select-unidade'> 
                         <div className="input-group text-center">
                             <h2>Unidade: </h2> 
@@ -78,7 +77,7 @@ const Unidade = (props) => {
                         <div className="mt-3">
                             { habilitarBotao ? 
                             "" : <Link to="/formulario">
-                            <button className='button btn btn-warning' disabled={habilitarBotao}>Continuar</button>
+                            <button className='button btn btn-warning btn-home' disabled={habilitarBotao}>Continuar</button>
                         </Link>}
                         </div>
                     </div>
