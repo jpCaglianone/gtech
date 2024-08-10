@@ -74,6 +74,19 @@
                     "extensao": "Second Hand"
                 }
             ]
+        },
+        {
+            "Eternno" : [
+                
+                {
+                    "nomeFantasia": "ETERNNO comércio de jóias e artigos de luxo LTDA",
+                    "endereco": "Rua Visconde de Pirajá, n° 414 – sala 1116 – Ipanema - Rio de Janeiro/RJ",
+                    "cnpj": "54.984.714/0001-00",
+                    "cep": "22410-905",
+                    "extensao": "NN"
+                }
+
+            ]
         }
     ]
 }

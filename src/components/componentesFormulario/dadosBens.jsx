@@ -8,7 +8,6 @@ const DadosBens = () => {
     itens,
     pesoTotal,
     setPesoTotal,
-    valorTotal,
     setValorTotal
   } = useContext(DadosFormulario);
 

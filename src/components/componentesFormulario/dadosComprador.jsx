@@ -49,7 +49,7 @@ const DadosComprador = (props) => {
         setNomeComprador(infoAux[index].nomeFantasia);
         setCepComprador(infoAux[index].cep);
         setCnpj(infoAux[index].cnpj);
-
+        
         let urlImg
         if (infoAux[index].extensao.trim().toLowerCase() === "second hand") {
             urlImg = "/assets/image_REV.png";
@@ -61,6 +61,8 @@ const DadosComprador = (props) => {
             urlImg = "/assets/image_GTT.png";
         } else if (infoAux[index].extensao.trim().toLowerCase() === "scrap") {
             urlImg = "/assets/image2.png";
+        } else if (infoAux[index].extensao.trim().toLowerCase() === "nn") {
+            urlImg = "/assets/image_NN.png";
         }
         else{
             urlImg="/assets/logo_GTech.png"
