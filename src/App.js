@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ContractComponent2 } from './components/contractComponent2';
+import { ContractComponent } from './components/ContractComponent';
 import Home from "./components/home";
 import React, { useState, createContext } from 'react';
 import Formulario from './components/formulario'
@@ -113,7 +113,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/formulario" element={<Formulario />} />
-          <Route path="/resultado" element={<ContractComponent2 />} />
+          <Route path="/resultado" element={<ContractComponent />} />
         </Routes>
       </Router>
     </DadosFormulario.Provider>
