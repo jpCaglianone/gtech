@@ -1,9 +1,25 @@
-import React, { useContext, useEffect, useState, useCallback } from 'react';
+import React, { useContext, useEffect, useState, useCallback, useRef } from 'react';
 import './contract.css';
 import { DadosFormulario } from '../App';
 // eslint-disable-next-line
 import html2pdf from 'html2pdf.js';
 import numeroPorExtenso from '../js/valorPorExtenso'
+import { useReactToPrint } from "react-to-print";
+
+const printRef = useRef()
+
+const handlePrint = useReactToPrint({
+  content: () => printRef.current,
+  pageStyle: `
+       @media print {
+            @page {
+                size: 210mm 297mm; /* Tamanho A4 */
+                margin: 1mm !important;
+            }
+       }
+    `, documentTitle: `orcGTech_${nomeVendedor} - ${nomeComprador} - ${dia}${mes}${ano}${hora}${minuto}${segundo}`
+
+});
 
 const ContractComponent = () => {
 
@@ -55,23 +71,39 @@ const ContractComponent = () => {
     return parseFloat(str);
   }
 
+
   let numExtenso = stringComVirgulaParaNumero(valorTotal);
-  numExtenso = numeroPorExtenso(numExtenso);
-  setValorPorExtenso(numExtenso);
 
-  const conteudo = document.getElementById('conteudo');
-
+  // const conteudo = document.getElementById('conteudo');
 
   const ativarPrint = useCallback(() => {
-    html2pdf()
-      .from(conteudo)
-      .save(
-        `orcGTech_${nomeVendedor} - ${nomeComprador} - ${dia}${mes}${ano}${hora}${minuto}${segundo}.pdf`
-      );
+
+
+    useEffect(() => {
+
+
+      setCpfFormatado(formatarCPF(cpf));
+      setCepFormatado(formatarCEP(cepVendedor));
+      ativarPrint();
+
+    }, [ativarPrint, cepVendedor, cpf]);
+
+
+    numExtenso = numeroPorExtenso(numExtenso);
+    setValorPorExtenso(numExtenso);
+
+    // html2pdf()
+    //   .from(conteudo)
+    //   .save(
+    //     `orcGTech_${nomeVendedor} - ${nomeComprador} - ${dia}${mes}${ano}${hora}${minuto}${segundo}.pdf`
+    //   );
+
     setTimeout(() => {
       window.print();
     }, 3000);
+
   }, [conteudo, nomeVendedor, nomeComprador, dia, mes, ano, hora, minuto, segundo]);
+
   const meses = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril',
     'Maio', 'Junho', 'Julho', 'Agosto',
@@ -95,13 +127,13 @@ const ContractComponent = () => {
 
   const conteudoParaImprimir = (
 
-    <div id='conteudo'>
+    <div ref={printRef}>
       <br />
       <div className="c19 doc-content page-break" >
         <p className="c16a c11 d-flex" style={{ margin: '0 auto' }}>
           <img alt="" src={imagem} style={{ width: '185px', height: '50px', marginRight: '6px' }} />
-        
-        
+
+
           {tipoDocumento === "joias" ?
 
             <span className="c46">CONTRATO DE COMPRA E VENDA DE JOIAS</span>
@@ -124,7 +156,7 @@ const ContractComponent = () => {
           <img alt="" src="/assets/image1.png" style={{ width: '185px', height: '50px', marginLeft: '6px' }} />
         </p>
         <p className="c16 c11">
-          <br/>
+          <br />
           <span className="c0">PARTES CONTRATANTES</span>
         </p>
         <p className="c5 c11">
@@ -404,12 +436,6 @@ const ContractComponent = () => {
 
     </div>
   );
-
-  useEffect(() => {
-    setCpfFormatado(formatarCPF(cpf));
-    setCepFormatado(formatarCEP(cepVendedor));
-    ativarPrint();
-  }, [ativarPrint, cepVendedor, cpf]);
 
 
   return conteudoParaImprimir;
