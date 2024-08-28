@@ -100,17 +100,15 @@ export const ContractComponent2 = () => {
             setValorPorExtenso(String(numExtenso));
         }
 
-        setCpfFormatado(formatCPF(cpf))
-        setCepVendedorFormatado(formatCEP(cepVendedor))
-        setCepCompradorFormatado(formatCEP(cepComprador))
-
+        setCpfFormatado(formatCPF(cpf));
+        setCepVendedorFormatado(formatCEP(cepVendedor));
+        setCepCompradorFormatado(formatCEP(cepComprador));
 
         setTimeout(() => {
-            handlePrint()
+            handlePrint();
         }, 1000);
 
-
-    }, [handlePrint]);
+    }, [cepComprador, cepVendedor, cpf, setValorPorExtenso, valorTotal, handlePrint]);
 
 
     return (
