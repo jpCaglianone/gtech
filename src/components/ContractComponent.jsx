@@ -3,6 +3,7 @@ import './contract.css';
 import { DadosFormulario } from '../App';
 import { useReactToPrint } from "react-to-print";
 import numeroPorExtenso from '../js/valorPorExtenso'
+import html2pdf from 'html2pdf.js';
 
 export const ContractComponent = () => {
 
@@ -57,6 +58,9 @@ export const ContractComponent = () => {
     const [dia] = useState(new Date().getDate());
     const [mes] = useState(new Date().getMonth());
     const [ano] = useState(new Date().getFullYear());
+    const [hora] = useState(new Date().getHours());
+    const [minuto] = useState(new Date().getMinutes());
+    const [segundo] = useState(new Date().getSeconds());
     const [cpfFormatado, setCpfFormatado] = useState();
     const [cepVendedorFormatado, setCepVendedorFormatado] = useState("");
     const [cepCompradorFormatado, setCepCompradorFormatado] = useState("");
@@ -84,7 +88,26 @@ export const ContractComponent = () => {
         return formattedCEP;
     }
 
+
+
     useEffect(() => {
+
+        const handleDownload = () => {
+            if (printRef.current) {
+                const options = {
+                    margin: 0.5,
+                    filename: `contrato_${new Date().toISOString().slice(0, 10)}.pdf`,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+
+                html2pdf()
+                    .from(printRef.current)
+                    .set(options)
+                    .save(`orcGTech_${nomeVendedor} - ${nomeComprador} - ${dia}${mes}${ano}${hora}${minuto}${segundo}.pdf`);
+            }
+        }
 
         function stringComVirgulaParaNumero(str) {
             str = str.replace('R$', '').trim();
@@ -106,9 +129,11 @@ export const ContractComponent = () => {
 
         setTimeout(() => {
             handlePrint();
+            handleDownload();
         }, 1000);
 
-    }, [cepComprador, cepVendedor, cpf, setValorPorExtenso, valorTotal, handlePrint]);
+    }, [cepComprador, cepVendedor, cpf, setValorPorExtenso, handlePrint, valorTotal, ano, mes, dia, hora, minuto, segundo, nomeComprador, nomeVendedor]);
+
 
 
     return (
