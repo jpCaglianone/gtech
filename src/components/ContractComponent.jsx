@@ -16,14 +16,19 @@ export const ContractComponent = () => {
     const handlePrint = useReactToPrint({
         content: () => printRef.current,
         pageStyle: `
-         @media print {
-              @page {
-                  size: 210mm 297mm; 
-                  margin: 1mm !important;
-              }
-         }
-      `,
+            @media print {
+                @page {
+                    size: letter;
+                    margin: -0.2in 0.25in -0.2in 0.1in; /* Margens: [top, right, bottom, left] */
+                }
+                body {
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+            }
+        `,
     });
+
 
     const {
         quantidadeTotal,
@@ -94,7 +99,7 @@ export const ContractComponent = () => {
         const handleDownload = () => {
             if (printRef.current) {
                 const options = {
-                    margin: [0.1, 0.5, 0.1, 0.5],
+                    margin: [-0.2, 0.25, -0.2, 0.1],
                     filename: `orcGTech_${nomeVendedor} - ${nomeComprador} - ${dia}${mes}${ano}${hora}${minuto}${segundo}.pdf`,
                     image: { type: 'jpeg', quality: 0.98 },
                     html2canvas: { scale: 2 },
@@ -239,6 +244,7 @@ export const ContractComponent = () => {
                             </tr>
                         </tbody>
                     </table>
+                    &nbsp;&nbsp;&nbsp;
                     <p className="c11 c41">
                         <span className="c0">OBJETO DO CONTRATO</span>
                     </p>
@@ -369,7 +375,7 @@ export const ContractComponent = () => {
                         </tbody>
                     </table>
                     <div >
-
+                        &nbsp;&nbsp;&nbsp;
                         {
 
                             tipoDocumento === "joias" ?

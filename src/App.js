@@ -8,7 +8,7 @@ import Formulario from './components/formulario'
 
 export const DadosFormulario = createContext();
 
-const QTD_BENS = 12;
+const QTD_BENS = 14;
 
 function App() {
 
