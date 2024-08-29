@@ -89,14 +89,13 @@ export const ContractComponent = () => {
     }
 
 
-
     useEffect(() => {
 
         const handleDownload = () => {
             if (printRef.current) {
                 const options = {
-                    margin: 0.5,
-                    filename: `contrato_${new Date().toISOString().slice(0, 10)}.pdf`,
+                    margin: [0.1, 0.5, 0.1, 0.5],
+                    filename: `orcGTech_${nomeVendedor} - ${nomeComprador} - ${dia}${mes}${ano}${hora}${minuto}${segundo}.pdf`,
                     image: { type: 'jpeg', quality: 0.98 },
                     html2canvas: { scale: 2 },
                     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -138,7 +137,8 @@ export const ContractComponent = () => {
 
     return (
         <>
-            <div ref={printRef}>
+
+            <div id='contedo' ref={printRef}>
                 <br />
                 <div className="c19 doc-content page-break" >
                     <p className="c16a c11 d-flex" style={{ margin: '0 auto' }}>
@@ -239,7 +239,6 @@ export const ContractComponent = () => {
                             </tr>
                         </tbody>
                     </table>
-                    <br />
                     <p className="c11 c41">
                         <span className="c0">OBJETO DO CONTRATO</span>
                     </p>
@@ -371,7 +370,6 @@ export const ContractComponent = () => {
                     </table>
                     <div >
 
-                        <br />
                         {
 
                             tipoDocumento === "joias" ?
@@ -440,7 +438,7 @@ export const ContractComponent = () => {
 
                     </div>
                     <p className="c16 c11 "><span className="c3">RIO DE JANEIRO {dia} de {meses[mes]} de {ano}</span></p>
-                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                     <p className="c16 c11"><span className="c3">___________________________________________________</span></p>
                     <p className="c16 c11"><span className="c43">ASSINATURA DO VENDEDOR</span></p>
                 </div>

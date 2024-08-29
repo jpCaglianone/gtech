@@ -223,6 +223,7 @@ table th {
     border-top-color: #000000;
     border-bottom-style: solid
 }
+
 .c22a {
     border-right-style: solid;
     padding: 5pt 5pt 5pt 5pt;
@@ -485,7 +486,8 @@ table th {
 .c19 {
     background-color: #ffffff;
     max-width: 574.1pt;
-    padding: 5pt;}
+    padding: 5pt;
+}
 
 .c11 {
     orphans: 2;
@@ -677,27 +679,33 @@ h6 {
     text-align: left
 }
 
-.br{
+.br {
     padding: 2.5px;
 }
 
 @media print {
     @page {
-      margin-top: -10px;
-      margin: 0px;
-      overflow: hidden; 
-      page-break-inside: avoid; 
-      page-break-after: avoid; 
+        margin-top: -10px;
+        margin-left: 4px;
+        overflow: hidden;
+        page-break-inside: avoid;
+        page-break-after: avoid;
     }
-  
+
     #conteudo {
-        page-break-inside: avoid; 
-        page-break-after: avoid; 
-        height: 95%;          
-        margin-top : -4px;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        height: 95%;
+        margin-top: -4px;
         width: 100%;
+        margin-left: 10px;
     }
-  }
-  #conteudo{
+
+    .c25 {
+        width: 90%;
+    }
+}
+
+#conteudo {
     margin-left: 12px;
-  }
+}
