@@ -3,12 +3,14 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ContractComponent } from './components/ContractComponent';
 import Home from "./components/home";
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import Formulario from './components/formulario'
+
+import Desativado from './desativado';
 
 export const DadosFormulario = createContext();
 
-const QTD_BENS = 12;
+const QTD_BENS = 14;
 
 function App() {
 
@@ -45,7 +47,11 @@ function App() {
   const [imagem, setImagem] = useState();
   const [tipoDocumento, setTipoDocumento] = useState("");
   //#endregion
-
+  useEffect(() => {
+    if (process.env.NEXT_PUBLIC_WORKING === "false") {
+      return (<Desativado />)
+    }
+  })
 
   return (
     <DadosFormulario.Provider
