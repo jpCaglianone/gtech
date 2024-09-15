@@ -686,7 +686,7 @@ h6 {
 @media print {
     @page {
         margin-top: -10px;
-        margin-left: 4px;
+        margin: 0px;
         overflow: hidden;
         page-break-inside: avoid;
         page-break-after: avoid;
@@ -698,10 +698,9 @@ h6 {
         height: 95%;
         margin-top: -4px;
         width: 100%;
-        margin-left: 10px;
     }
 
-    .c25 {
+    .c25{
         width: 90%;
     }
 }

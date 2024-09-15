@@ -143,7 +143,7 @@ export const ContractComponent = () => {
     return (
         <>
 
-            <div id='contedo' ref={printRef}>
+            <div id='conteudo' ref={printRef}>
                 <br />
                 <div className="c19 doc-content page-break" >
                     <p className="c16a c11 d-flex" style={{ margin: '0 auto' }}>

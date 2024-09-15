@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import  './App.css';
+import './App.css';
 import App from './App';
+
+useEffect(() => {
+  if (process.env.NEXT_PUBLIC_WORKING === "false") {
+    return (<Desativado />)
+  }
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
