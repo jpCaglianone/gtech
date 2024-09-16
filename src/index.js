@@ -6,7 +6,7 @@ import App from './App';
 import Desativado from './desativado';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const __WORKING = false
+const __WORKING = true
 
 if (!__WORKING) {
   root.render(
