@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './App.css';
@@ -6,7 +6,7 @@ import App from './App';
 import Desativado from './desativado';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const __WORKING = false
+const __WORKING = true
 
 if (!__WORKING) {
   root.render(
@@ -20,7 +20,7 @@ else {
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  );
-}
+  )
+   ;}
 
 
