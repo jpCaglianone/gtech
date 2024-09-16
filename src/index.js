@@ -3,14 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './App.css';
 import App from './App';
+import Desativado from './desativado';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+const __WORKING = false
 
-
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+if (!__WORKING) {
+  root.render(
+    <React.StrictMode>
+      <Desativado />
+    </React.StrictMode>
+  );
+}
+else {
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}
 
 
