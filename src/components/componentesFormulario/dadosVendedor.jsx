@@ -49,9 +49,7 @@ const DadosVendedor = () => {
     setCepVendedor(novoCep);
     if (novoCep.length === 8) {
       try {
-        const response = await axios.get(
-
-        );
+        const response = await axios.get(`https://viacep.com.br/ws/${novoCep}/json/`);
         const { logradouro, complemento, localidade, uf } = response.data;
         if (logradouro === undefined) {
           alert("CEP incorreto");
